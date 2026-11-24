@@ -14,8 +14,27 @@
   <header>
     <div class="container nav-wrap">
       <a href="index.html" class="brand">
-        <span class="brand-icon">LT</span>
-        <span>LIGHTHOUSE TECH</span>
+            <span class="brand-logo" aria-hidden="true">
+          <svg width="44" height="38" viewBox="0 0 44 38" fill="none" xmlns="http://w3.org">
+            <rect width="44" height="38" rx="10" fill="#0f172a" stroke="rgba(56,189,248,0.3)" stroke-width="1.3"/>
+            <path d="M13 5L16.5 8.5H9.5L13 5Z" fill="#38bdf8"/>
+            <rect x="10.5" y="8.5" width="5" height="4" rx="0.8" fill="#f59e0b"/>
+            <path d="M10.2 12.5H15.8L17.5 31H8.5L10.2 12.5Z" fill="#f8fafc"/>
+            <path d="M9.6 19H16.4L16.8 23.5H9.2L9.6 19Z" fill="#38bdf8"/>
+            <path d="M6.5 31H19.5" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16.5 10.5L25 6.5H36" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16.5 10.5H38" stroke="#f59e0b" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M16.5 10.5L25 14.5H36" stroke="#38bdf8" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="36" cy="6.5" r="1.4" fill="#f59e0b"/>
+            <circle cx="38" cy="10.5" r="1.5" fill="#f59e0b"/>
+            <circle cx="36" cy="14.5" r="1.4" fill="#38bdf8"/>
+          </svg>
+        </span>
+
+        <span class="brand-text">
+          <strong>LIGHTHOUSE TECH</strong>
+          <small>IT SUPPORT & NETWORKING</small>
+        </span>
       </a>
       <div class="lang-switch" aria-label="Selector limbă">
         <button class="lang-btn active" onclick="setLang('ro', this)">RO</button>
@@ -24,9 +43,9 @@
       </div>
     </div>
     <nav class="page-nav">
-      <a href="index.html" data-i18n="pg_home">🏠 Acasă</a>
-      <a href="tarife.html" class="active-page" data-i18n="pg_prices">💳 Tarife & Estimator</a>
-      <a href="contact.html" data-i18n="pg_contact">📄 Contracte & Contact</a>
+      <a href="index.html" data-i18n="pg_home">Acasă</a>
+      <a href="tarife.html" class="active-page" data-i18n="pg_prices">Tarife & Estimator</a>
+      <a href="contact.html" data-i18n="pg_contact">Contracte & Contact</a>
     </nav>
   </header>
 
@@ -34,103 +53,118 @@
     <div class="container">
       <div class="section-head">
         <h2 data-i18n="prc_title">SERVICII & TARIFE LA CERERE</h2>
-        <p data-i18n="prc_sub">Fără abonamente lunare. Plătești doar când ai nevoie.</p>
+        <p data-i18n="prc_sub">Fără abonamente lunare. Plătești doar pentru intervenția de care ai nevoie.</p>
       </div>
 
       <div class="pricing-grid">
         <div class="price-card">
-          <h3 data-i18n="c1_title">💻 SUPORT REMOTE</h3>
+          <h3 data-i18n="c1_title">SUPORT REMOTE</h3>
           <div class="price-val">80 lei</div>
-          <div class="price-sub" data-i18n="c1_sub">/ intervenție</div>
-          <span class="travel-pill" style="background: rgba(56,189,248,0.12); color: var(--primary); border-color: rgba(56,189,248,0.3);" data-i18n="c1_pill">🌐 De la distanță (0 lei deplasare)</span>
+          <div class="price-sub" data-i18n="c1_sub">/ sesiune până la 60 min (1 PC)</div>
+          <span class="travel-pill" style="background: rgba(56,189,248,0.12); color: var(--primary); border-color: rgba(56,189,248,0.3);" data-i18n="c1_pill">De la distanță • 0 lei deplasare</span>
           <ul class="price-features">
-            <li data-i18n="c1_f1">Diagnosticare AnyDesk / TeamViewer</li>
-            <li data-i18n="c1_f2">Instalare programe, drivere și e-mail</li>
-            <li data-i18n="c1_f3">Plată în avans Revolut (@nitaa2saa)</li>
+            <li data-i18n="c1_f1">Diagnosticare securizată AnyDesk / TeamViewer</li>
+            <li data-i18n="c1_f2">Instalare programe, drivere și configurare e-mail</li>
+            <li data-i18n="c1_f3">Prelungire: +80 lei / oră suplimentară</li>
+            <li data-i18n="c1_f4">Plată în avans prin Revolut (@nitaa2saa)</li>
           </ul>
           <a href="https://wa.me." target="_blank" rel="noopener" class="btn btn-outline" data-i18n="c1_btn">Solicită remote</a>
         </div>
 
         <div class="price-card popular">
           <span class="popular-tag" data-i18n="pop_tag">Cel mai popular</span>
-          <h3 data-i18n="c2_title">🖨️ INTERVENȚIE RAPIDĂ</h3>
+          <h3 data-i18n="c2_title">INTERVENȚIE RAPIDĂ</h3>
           <div class="price-val">250 lei</div>
-          <div class="price-sub" data-i18n="c2_sub">/ până la 2 ore</div>
-          <span class="travel-pill" data-i18n="c2_pill">🚗 Timișoara inclus • +100 lei Arad/Lugoj</span>
+          <div class="price-sub" data-i18n="c2_sub">/ până la 2 ore (1–2 stații)</div>
+          <span class="travel-pill" data-i18n="c2_pill">Timișoara 0 lei • +100 lei Arad/Lugoj</span>
           <ul class="price-features">
-            <li data-i18n="c2_f1">Diagnosticare și remediere PC la sediu</li>
-            <li data-i18n="c2_f2">Instalare imprimante și periferice</li>
-            <li data-i18n="c2_f3">Deplasare +100 lei pentru Arad / Lugoj</li>
+            <li data-i18n="c2_f1">Sosire în 2–4 ore în Timișoara și limitrof</li>
+            <li data-i18n="c2_f2">Diagnosticare și remediere pentru 1–2 PC-uri</li>
+            <li data-i18n="c2_f3">Instalare imprimante și periferice de birou</li>
+            <li data-i18n="c2_f4">Ora suplimentară: +100 lei / oră</li>
           </ul>
           <a href="https://wa.me." target="_blank" rel="noopener" class="btn btn-primary" data-i18n="c2_btn">Rezervă 2 ore</a>
         </div>
 
         <div class="price-card">
-          <h3 data-i18n="c3_title">⚙️ MENTENANȚĂ ONSITE</h3>
+          <h3 data-i18n="c3_title">MENTENANȚĂ ONSITE</h3>
           <div class="price-val">400 lei</div>
-          <div class="price-sub" data-i18n="c3_sub">/ până la 4 ore</div>
-          <span class="travel-pill" data-i18n="c3_pill">🚗 Timișoara inclus • +100 lei Arad/Lugoj</span>
+          <div class="price-sub" data-i18n="c3_sub">/ până la 4 ore (până la 5 stații)</div>
+          <span class="travel-pill" data-i18n="c3_pill">Timișoara 0 lei • +100 lei Arad/Lugoj</span>
           <ul class="price-features">
-            <li data-i18n="c3_f1">Curățare și optimizare calculatoare</li>
-            <li data-i18n="c3_f2">Configurare routere Wi-Fi și rețea</li>
-            <li data-i18n="c3_f3">Deplasare +100 lei pentru Arad / Lugoj</li>
+            <li data-i18n="c3_f1">Curățare hardware și optimizare până la 5 PC-uri</li>
+            <li data-i18n="c3_f2">Configurare routere Wi-Fi, switch-uri și rețea LAN</li>
+            <li data-i18n="c3_f3">Configurare backup date și partajare fișiere</li>
+            <li data-i18n="c3_f4">Ora suplimentară: +100 lei / oră</li>
           </ul>
           <a href="https://wa.me." target="_blank" rel="noopener" class="btn btn-outline" data-i18n="c3_btn">Rezervă 4 ore</a>
         </div>
 
         <div class="price-card">
-          <h3 data-i18n="c4_title">🌐 ZI COMPLETĂ & REȚEA</h3>
+          <h3 data-i18n="c4_title">ZI COMPLETĂ & REȚEA</h3>
           <div class="price-val">750 lei</div>
-          <div class="price-sub" data-i18n="c4_sub">/ zi (8 ore)</div>
-          <span class="travel-pill" data-i18n="c4_pill">🚗 Timișoara inclus • +100 lei Arad/Lugoj</span>
+          <div class="price-sub" data-i18n="c4_sub">/ zi 8 ore (birou complet)</div>
+          <span class="travel-pill" data-i18n="c4_pill">Timișoara 0 lei • +100 lei Arad/Lugoj</span>
           <ul class="price-features">
-            <li data-i18n="c4_f1">Montare pat cablu, tras cabluri și mufare</li>
-            <li data-i18n="c4_f2">Configurare completă LAN & Wi-Fi</li>
-            <li data-i18n="c4_f3">🎁 Bonus: 1 intervenție remote gratuită</li>
+            <li data-i18n="c4_f1">Montare pat cablu, trasare cabluri UTP și mufare</li>
+            <li data-i18n="c4_f2">Configurare completă rețea LAN, Wi-Fi și stații</li>
+            <li data-i18n="c4_f3">Materialele consumabile nu sunt incluse</li>
+            <li data-i18n="c4_f4">Bonus inclus: 1 sesiune Suport Remote gratuită</li>
           </ul>
           <a href="https://wa.me." target="_blank" rel="noopener" class="btn btn-outline" data-i18n="c4_btn">Rezervă o zi</a>
         </div>
       </div>
 
+      <div class="terms-grid">
+        <div class="term-item" data-i18n="term_mat">
+          <strong>Materiale și consumabile</strong>
+          Tarifele afișate reprezintă manopera. Cablurile UTP, mufele RJ45, patul de cablu, prizele sau componentele hardware trebuie asigurate de client înainte de intervenție sau achitate în avans pentru achiziție pe baza bonului/facturii.
+        </div>
+        <div class="term-item" data-i18n="term_extra">
+          <strong>Ore suplimentare și garanție</strong>
+          Dacă lucrarea depășește durata pachetului ales, prelungirea se face doar cu acordul tău (+80 lei/oră remote, +100 lei/oră onsite). Toate lucrările beneficiază de 30 de zile garanție pe manoperă.
+        </div>
+      </div>
+
       <div class="bonus-note" data-i18n="bonus_txt">
-        <strong>🎁 BONUS LA 8 ORE:</strong> Primești gratuit o intervenție de Suport Remote pentru reglaje ulterioare.
+        <strong>BONUS LA PACHETUL DE 8 ORE:</strong> Primești gratuit o intervenție de Suport Remote (60 min) pentru reglaje ulterioare.
       </div>
     </div>
   </section>
-  <section class="section" id="estimator">
+  <section class="section" id="estimator" style="padding-top: 10px;">
     <div class="container">
       <div class="section-head">
         <h2 data-i18n="est_title">ESTIMATOR INTERVENȚIE</h2>
-        <p data-i18n="est_sub">Bifează ce ai nevoie și află imediat costul estimat.</p>
+        <p data-i18n="est_sub">Bifează ce ai nevoie și află imediat pachetul recomandat și costul estimat.</p>
       </div>
 
       <div class="estimator-box">
         <div class="check-list">
           <label class="check-item">
             <span class="check-left">
-              <input type="checkbox" class="task-cb" value="remote" data-label="Suport software / e-mail de la distanță" onchange="updateEstimate()">
-              <span data-i18n="chk_1">Suport software / e-mail de la distanță</span>
+              <input type="checkbox" class="task-cb" value="remote" data-label="Suport software / e-mail de la distanță (60 min)" onchange="updateEstimate()">
+              <span data-i18n="chk_1">Suport software / e-mail de la distanță (până la 60 min)</span>
             </span>
-            <span class="check-tag" data-i18n="tag_1">de la 80 lei</span>
+            <span class="check-tag" data-i18n="tag_1">80 lei</span>
           </label>
           <label class="check-item">
             <span class="check-left">
-              <input type="checkbox" class="task-cb" value="rapid" data-label="Optimizare / curățare PC-uri sau imprimante" onchange="updateEstimate()">
-              <span data-i18n="chk_2">Optimizare / curățare PC-uri sau imprimante</span>
+              <input type="checkbox" class="task-cb" value="rapid" data-label="Diagnosticare PC (1-2 stații) sau instalare imprimantă" onchange="updateEstimate()">
+              <span data-i18n="chk_2">Diagnosticare PC (1–2 stații) sau instalare imprimantă</span>
             </span>
             <span class="check-tag">250 lei (+100 Arad/Lugoj)</span>
           </label>
           <label class="check-item">
             <span class="check-left">
-              <input type="checkbox" class="task-cb" value="mentenanta" data-label="Configurare router Wi-Fi / rețea existentă" onchange="updateEstimate()">
-              <span data-i18n="chk_3">Configurare router Wi-Fi / rețea existentă</span>
+              <input type="checkbox" class="task-cb" value="mentenanta" data-label="Optimizare până la 5 PC-uri / configurare Wi-Fi & LAN" onchange="updateEstimate()">
+              <span data-i18n="chk_3">Optimizare până la 5 PC-uri / configurare Wi-Fi & LAN</span>
             </span>
             <span class="check-tag">400 lei (+100 Arad/Lugoj)</span>
           </label>
           <label class="check-item">
             <span class="check-left">
-              <input type="checkbox" class="task-cb" value="full" data-label="Tras cabluri, pat cablu, mufare / birou nou" onchange="updateEstimate()">
-              <span data-i18n="chk_4">Tras cabluri, pat cablu, mufare / birou nou</span>
+              <input type="checkbox" class="task-cb" value="full" data-label="Tras cabluri, pat cablu, mufare / configurare birou nou" onchange="updateEstimate()">
+              <span data-i18n="chk_4">Tras cabluri, pat cablu, mufare / configurare birou nou</span>
             </span>
             <span class="check-tag">750 lei (+100 Arad/Lugoj)</span>
           </label>
@@ -142,11 +176,11 @@
             <div class="radio-stack">
               <label class="radio-card">
                 <input type="radio" name="zone" value="0" checked onchange="updateEstimate()">
-                <span data-i18n="zone_tm">📍 Timișoara și limitrof (0 lei deplasare)</span>
+                <span data-i18n="zone_tm">Timișoara și limitrof (0 lei deplasare)</span>
               </label>
               <label class="radio-card">
                 <input type="radio" name="zone" value="100" onchange="updateEstimate()">
-                <span data-i18n="zone_al">📍 Arad / Lugoj (+100 lei deplasare)</span>
+                <span data-i18n="zone_al">Arad / Lugoj (+100 lei deplasare)</span>
               </label>
             </div>
           </div>
@@ -156,11 +190,11 @@
             <div class="radio-stack">
               <label class="radio-card">
                 <input type="radio" name="payment" value="Numerar (Cash)" checked onchange="updateEstimate()">
-                <span data-i18n="pay_cash">💵 Numerar (Cash)</span>
+                <span data-i18n="pay_cash">Numerar (Cash)</span>
               </label>
               <label class="radio-card">
                 <input type="radio" name="payment" value="Revolut (@nitaa2saa)" onchange="updateEstimate()">
-                <span>📱 Revolut (@nitaa2saa)</span>
+                <span>Revolut (@nitaa2saa)</span>
               </label>
             </div>
           </div>
@@ -168,13 +202,13 @@
 
         <div id="revolutBox" class="revolut-panel">
           <div style="flex: 1; min-width: 210px;">
-            <strong style="color: var(--primary);" data-i18n="rev_title">💳 Plată rapidă Revolut — George Niță (@nitaa2saa)</strong>
+            <strong style="color: var(--primary);" data-i18n="rev_title">Plată rapidă Revolut — George Niță (@nitaa2saa)</strong>
             <p style="color: var(--text-muted); font-size: 0.86rem; margin: 5px 0 10px;" data-i18n="rev_sub">
-              Scanează codul QR sau apasă butonul pentru plată directă:
+              Scanează codul QR sau folosește linkul direct pentru transfer:
             </p>
             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-              <a href="https://revolut.me" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 14px; font-size: 0.84rem;">🚀 Revolut.me</a>
-              <button type="button" class="btn btn-outline" style="padding: 8px 12px; font-size: 0.84rem;" onclick="copyRevTag(this)" data-i18n="rev_copy">📋 Copiază @nitaa2saa</button>
+              <a href="https://revolut.me" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 14px; font-size: 0.84rem;">Deschide Revolut.me</a>
+              <button type="button" class="btn btn-outline" style="padding: 8px 12px; font-size: 0.84rem;" onclick="copyRevTag(this)" data-i18n="rev_copy">Copiază @nitaa2saa</button>
             </div>
           </div>
           <img src="revolut-qr.jpg" alt="QR Revolut @nitaa2saa" class="revolut-qr-img">
@@ -182,28 +216,28 @@
 
         <div class="estimator-result">
           <div>
-            <div style="font-size: 0.82rem; color: var(--text-muted);" data-i18n="est_rec">Recomandare estimată:</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted);" data-i18n="est_rec">Recomandare estimată (manoperă):</div>
             <div id="estText" class="est-price" data-i18n="est_empty">Alege cel puțin o opțiune</div>
           </div>
           <button type="button" class="btn btn-whatsapp" onclick="sendEstimateWhatsApp()" data-i18n="btn_wa_est">
-            💬 Trimite pe WhatsApp
+            Trimite pe WhatsApp
           </button>
         </div>
 
         <div class="email-toggle-wrap">
           <button type="button" class="btn btn-outline" style="padding: 9px 15px; font-size: 0.86rem;" onclick="document.getElementById('emailFormBox').classList.toggle('open')" data-i18n="email_toggle">
-            ✉️ Preferi să trimiți cererea pe e-mail? Apasă aici
+            Preferi să trimiți cererea pe e-mail? Apasă aici
           </button>
 
-          <form id="emailFormBox" action="https://formsubmit.co" method="POST" class="netlify-form-box">
-
-            <input type="hidden" name="form-name" value="cerere-oferta" />
+          <form id="emailFormBox" action="https://formsubmit.co" method="POST" class="email-form-box">
+            <input type="hidden" name="_subject" value="Cerere noua oferta - Lighthouse Tech" />
+            <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="estimare_calculata" id="hiddenEstimateInput" value="Neselectat" />
             <div class="form-grid">
               <input type="text" name="nume" class="form-control" data-i18n-ph="ph_name" placeholder="Numele tău / Firma" required />
               <input type="text" name="contact" class="form-control" data-i18n-ph="ph_contact" placeholder="E-mail sau nr. WhatsApp" required />
-              <textarea name="detalii" rows="2" class="form-control form-full" data-i18n-ph="ph_details" placeholder="Descrie pe scurt problema și localitatea..."></textarea>
-              <button type="submit" class="btn btn-primary form-full" data-i18n="form_btn">📩 Trimite cererea pe e-mail</button>
+              <textarea name="detalii" rows="2" class="form-control form-full" data-i18n-ph="ph_details" placeholder="Descrie pe scurt problema, numărul de calculatoare și localitatea..."></textarea>
+              <button type="submit" class="btn btn-primary form-full" data-i18n="form_btn">Trimite cererea pe e-mail</button>
             </div>
           </form>
         </div>
@@ -213,12 +247,12 @@
 
   <footer>
     <div class="container footer-flex">
-      <div><strong>LIGHTHOUSE TECH — George Niță</strong> • Timișoara, Arad & Lugoj</div>
+      <div><strong>LIGHTHOUSE TECH — George Niță</strong> • Timișoara, Arad & Lugoj • 0767 231 199</div>
       <a href="contact.html" class="btn btn-primary" style="padding: 8px 14px; font-size: 0.84rem;" data-i18n="next_contact">Mergi la Contracte & Contact →</a>
     </div>
   </footer>
 
-  <a href="https://wa.me." target="_blank" rel="noopener" class="wa-float">💬 WhatsApp</a>
+  <a href="https://wa.me" target="_blank" rel="noopener" class="wa-float">WhatsApp</a>
   <script src="main.js"></script>
 </body>
 </html>

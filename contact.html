@@ -14,8 +14,27 @@
   <header>
     <div class="container nav-wrap">
       <a href="index.html" class="brand">
-        <span class="brand-icon">LT</span>
-        <span>LIGHTHOUSE TECH</span>
+               <span class="brand-logo" aria-hidden="true">
+          <svg width="44" height="38" viewBox="0 0 44 38" fill="none" xmlns="http://w3.org">
+            <rect width="44" height="38" rx="10" fill="#0f172a" stroke="rgba(56,189,248,0.3)" stroke-width="1.3"/>
+            <path d="M13 5L16.5 8.5H9.5L13 5Z" fill="#38bdf8"/>
+            <rect x="10.5" y="8.5" width="5" height="4" rx="0.8" fill="#f59e0b"/>
+            <path d="M10.2 12.5H15.8L17.5 31H8.5L10.2 12.5Z" fill="#f8fafc"/>
+            <path d="M9.6 19H16.4L16.8 23.5H9.2L9.6 19Z" fill="#38bdf8"/>
+            <path d="M6.5 31H19.5" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16.5 10.5L25 6.5H36" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16.5 10.5H38" stroke="#f59e0b" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M16.5 10.5L25 14.5H36" stroke="#38bdf8" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="36" cy="6.5" r="1.4" fill="#f59e0b"/>
+            <circle cx="38" cy="10.5" r="1.5" fill="#f59e0b"/>
+            <circle cx="36" cy="14.5" r="1.4" fill="#38bdf8"/>
+          </svg>
+        </span>
+
+        <span class="brand-text">
+          <strong>LIGHTHOUSE TECH</strong>
+          <small>IT SUPPORT & NETWORKING</small>
+        </span>
       </a>
       <div class="lang-switch" aria-label="Selector limbă">
         <button class="lang-btn active" onclick="setLang('ro', this)">RO</button>
@@ -24,9 +43,9 @@
       </div>
     </div>
     <nav class="page-nav">
-      <a href="index.html" data-i18n="pg_home">🏠 Acasă</a>
-      <a href="tarife.html" data-i18n="pg_prices">💳 Tarife & Estimator</a>
-      <a href="contact.html" class="active-page" data-i18n="pg_contact">📄 Contracte & Contact</a>
+      <a href="index.html" data-i18n="pg_home">Acasă</a>
+      <a href="tarife.html" data-i18n="pg_prices">Tarife & Estimator</a>
+      <a href="contact.html" class="active-page" data-i18n="pg_contact">Contracte & Contact</a>
     </nav>
   </header>
 
@@ -34,26 +53,26 @@
     <div class="container">
       <div class="section-head">
         <h2 data-i18n="info_title">INFORMAȚII UTILE & CONTRACTE</h2>
-        <p data-i18n="info_sub">Selectează secțiunea dorită</p>
+        <p data-i18n="info_sub">Selectează secțiunea dorită pentru detalii despre deplasare, acte și garanție.</p>
       </div>
 
       <div class="tabs-bar">
-        <button type="button" class="tab-btn active" onclick="switchTab('tab-zone', this)" data-i18n="tab_1">📍 Zone acoperite</button>
-        <button type="button" class="tab-btn" onclick="switchTab('tab-contracte', this)" data-i18n="tab_2">📄 Modele contracte (PDF)</button>
-        <button type="button" class="tab-btn" onclick="switchTab('tab-faq', this)" data-i18n="tab_3">❓ Cum colaborăm</button>
+        <button type="button" class="tab-btn active" onclick="switchTab('tab-zone', this)" data-i18n="tab_1">Zone acoperite & Timp sosire</button>
+        <button type="button" class="tab-btn" onclick="switchTab('tab-contracte', this)" data-i18n="tab_2">Modele contracte (PDF)</button>
+        <button type="button" class="tab-btn" onclick="switchTab('tab-faq', this)" data-i18n="tab_3">Întrebări frecvente</button>
       </div>
 
       <div id="tab-zone" class="tab-panel active">
         <div class="two-col">
           <div class="info-box">
-            <span class="zone-badge zone-free" data-i18n="z1_badge">DEPLASARE GRATUITĂ</span>
+            <span class="zone-badge zone-free" data-i18n="z1_badge">DEPLASARE GRATUITĂ (2–4 ORE)</span>
             <h3 data-i18n="z1_title">Timișoara & limitrof</h3>
-            <p style="color: var(--text-muted); margin-top: 6px; font-size: 0.92rem;">Timișoara, Dumbrăvița, Giroc, Ghiroda, Moșnița Nouă, Săcălaz, Utvin, Chișoda.</p>
+            <p style="color: var(--text-muted); margin-top: 6px; font-size: 0.92rem;">Timișoara, Dumbrăvița, Giroc, Ghiroda, Moșnița Nouă, Săcălaz, Utvin, Chișoda. Intervenție rapidă în 2–4 ore de la confirmare.</p>
           </div>
           <div class="info-box">
-            <span class="zone-badge zone-paid" data-i18n="z2_badge">DEPLASARE +100 LEI</span>
+            <span class="zone-badge zone-paid" data-i18n="z2_badge">DEPLASARE +100 LEI (MAX. 24 ORE)</span>
             <h3 data-i18n="z2_title">Arad & Lugoj</h3>
-            <p style="color: var(--text-muted); margin-top: 6px; font-size: 0.92rem;" data-i18n="z2_desc">Arad, Lugoj și localitățile limitrofe (taxă unică de transport per vizită).</p>
+            <p style="color: var(--text-muted); margin-top: 6px; font-size: 0.92rem;" data-i18n="z2_desc">Arad, Lugoj și localitățile limitrofe (taxă unică de transport per vizită, programare în cel mult 24 de ore).</p>
           </div>
         </div>
       </div>
@@ -62,12 +81,11 @@
         <div class="info-box" style="text-align: center;">
           <p style="color: var(--text-muted); margin-bottom: 16px;" data-i18n="ctr_desc">Deschide modelul, completează datele direct pe ecran și salvează ca PDF sau printează cu <strong>Ctrl + P</strong>.</p>
           <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
-            <button type="button" class="btn btn-outline" onclick="openContract('b2b')" data-i18n="ctr_b2b">📄 Contract Firme / B2B</button>
-            <button type="button" class="btn btn-outline" onclick="openContract('b2c')" data-i18n="ctr_b2c">📄 Contract / Proces-Verbal Persoane Fizice</button>
+            <button type="button" class="btn btn-outline" onclick="openContract('b2b')" data-i18n="ctr_b2b">Contract Firme / B2B</button>
+            <button type="button" class="btn btn-outline" onclick="openContract('b2c')" data-i18n="ctr_b2c">Contract / Proces-Verbal Persoane Fizice</button>
           </div>
         </div>
       </div>
-
       <div id="tab-faq" class="tab-panel">
         <div class="faq-list">
           <details open>
@@ -76,17 +94,22 @@
           </details>
           <details>
             <summary data-i18n="q2_t">Care este garanția intervenției?</summary>
-            <p data-i18n="q2_d">La finalul lucrării testăm împreună echipamentele. Semnarea procesului-verbal confirmă funcționarea optimă la predare.</p>
+            <p data-i18n="q2_d">La finalul lucrării testăm împreună echipamentele și semnăm procesul-verbal. Toate lucrările au garanție 30 de zile pe manoperă — dacă problema reapare, revenim și o remediem gratuit.</p>
           </details>
           <details>
-            <summary data-i18n="q3_t">Cum funcționează Suportul Remote (80 lei)?</summary>
-            <p data-i18n="q3_d">Se achită în avans prin Revolut (@nitaa2saa), apoi ne conectăm securizat prin AnyDesk sau TeamViewer.</p>
+            <summary data-i18n="q3_t">Cum funcționează Suportul Remote (80 lei) și cât durează?</summary>
+            <p data-i18n="q3_d">Tariful de 80 lei acoperă o sesiune de până la 60 de minute pe un calculator (prin AnyDesk sau TeamViewer) și se achită în avans prin Revolut (@nitaa2saa). Dacă intervenția necesită mai mult timp, prelungirea se face doar cu acordul tău (+80 lei/oră).</p>
+          </details>
+          <details>
+            <summary data-i18n="q4_t">Materialele (cabluri, mufe, pat cablu) sunt incluse în preț?</summary>
+            <p data-i18n="q4_d">Nu, tarifele afișate acoperă exclusiv manopera. Materialele necesare trebuie asigurate de client înainte de intervenție sau achitate în avans pentru achiziție pe baza bonului/facturii.</p>
           </details>
         </div>
       </div>
     </div>
   </section>
-  <section class="section" id="despre">
+
+  <section class="section" id="despre" style="padding-top: 10px;">
     <div class="container">
       <div class="about-compact">
         <div class="badge" style="margin-bottom: 8px;" data-i18n="ab_badge">Peste 10 ani experiență IT</div>
@@ -95,9 +118,9 @@
           Ofer firmelor mici și utilizatorilor din Timișoara, Arad și Lugoj sprijin tehnic prompt, transparent și fără abonamente lunare inutile — atât pe partea de hardware și rețelistică, cât și software.
         </p>
         <div class="contact-strip">
-          <button type="button" class="btn btn-primary" onclick="downloadVCard()" data-i18n="ab_vcard">📲 Salvează contactul (0767 231 199)</button>
-          <a href="https://wa.me." target="_blank" rel="noopener" class="btn btn-whatsapp">💬 WhatsApp</a>
-          <a href="mailto:lighthousetech.tm@gmail.com" class="btn btn-outline">✉️ lighthousetech.tm@gmail.com</a>
+          <button type="button" class="btn btn-primary" onclick="downloadVCard()" data-i18n="ab_vcard">Salvează contactul (0767 231 199)</button>
+          <a href="https://wa.me" target="_blank" rel="noopener" class="btn btn-whatsapp">WhatsApp</a>
+          <a href="mailto:lighthousetech.tm@gmail.com" class="btn btn-outline">lighthousetech.tm@gmail.com</a>
         </div>
       </div>
     </div>
@@ -107,19 +130,19 @@
     <div class="container footer-flex">
       <div><strong>LIGHTHOUSE TECH — George Niță</strong> • Timișoara, Arad & Lugoj • 0767 231 199</div>
       <button type="button" class="btn btn-outline" style="padding: 8px 13px; font-size: 0.82rem;" onclick="openModal('gdprModal')" data-i18n="gdpr_btn">
-        🔒 Politică GDPR
+        Politică GDPR
       </button>
     </div>
   </footer>
 
-  <a href="https://wa.me." target="_blank" rel="noopener" class="wa-float">💬 WhatsApp</a>
+  <a href="https://wa.me" target="_blank" rel="noopener" class="wa-float">WhatsApp</a>
 
   <div id="contractModal" class="modal-backdrop" onclick="if(event.target===this) closeModal('contractModal')">
     <div class="modal-window">
       <div class="modal-toolbar">
         <strong id="contractModalTitle">Model Contract</strong>
         <div style="display: flex; gap: 8px;">
-          <button type="button" class="btn btn-primary" style="padding: 7px 13px; font-size: 0.84rem;" onclick="window.print()">🖨️ Print / PDF (Ctrl+P)</button>
+          <button type="button" class="btn btn-primary" style="padding: 7px 13px; font-size: 0.84rem;" onclick="window.print()">Print / Salvează PDF (Ctrl+P)</button>
           <button type="button" class="btn btn-outline" style="padding: 7px 12px; font-size: 0.84rem; background: #fff; color: #0f172a;" onclick="closeModal('contractModal')">✕</button>
         </div>
       </div>
