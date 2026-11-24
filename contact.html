@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contracte & Contact — Lighthouse Tech | George Niță</title>
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">LT</span>
+        <span>LIGHTHOUSE TECH</span>
+      </a>
+      <div class="lang-switch" aria-label="Selector limbă">
+        <button class="lang-btn active" onclick="setLang('ro', this)">RO</button>
+        <button class="lang-btn" onclick="setLang('en', this)">EN</button>
+        <button class="lang-btn" onclick="setLang('fr', this)">FR</button>
+      </div>
+    </div>
+    <nav class="page-nav">
+      <a href="index.html" data-i18n="pg_home">🏠 Acasă</a>
+      <a href="tarife.html" data-i18n="pg_prices">💳 Tarife & Estimator</a>
+      <a href="contact.html" class="active-page" data-i18n="pg_contact">📄 Contracte & Contact</a>
+    </nav>
+  </header>
+
+  <section class="section" id="info">
+    <div class="container">
+      <div class="section-head">
+        <h2 data-i18n="info_title">INFORMAȚII UTILE & CONTRACTE</h2>
+        <p data-i18n="info_sub">Selectează secțiunea dorită</p>
+      </div>
+
+      <div class="tabs-bar">
+        <button type="button" class="tab-btn active" onclick="switchTab('tab-zone', this)" data-i18n="tab_1">📍 Zone acoperite</button>
+        <button type="button" class="tab-btn" onclick="switchTab('tab-contracte', this)" data-i18n="tab_2">📄 Modele contracte (PDF)</button>
+        <button type="button" class="tab-btn" onclick="switchTab('tab-faq', this)" data-i18n="tab_3">❓ Cum colaborăm</button>
+      </div>
+
+      <div id="tab-zone" class="tab-panel active">
+        <div class="two-col">
+          <div class="info-box">
+            <span class="zone-badge zone-free" data-i18n="z1_badge">DEPLASARE GRATUITĂ</span>
+            <h3 data-i18n="z1_title">Timișoara & limitrof</h3>
+            <p style="color: var(--text-muted); margin-top: 6px; font-size: 0.92rem;">Timișoara, Dumbrăvița, Giroc, Ghiroda, Moșnița Nouă, Săcălaz, Utvin, Chișoda.</p>
+          </div>
+          <div class="info-box">
+            <span class="zone-badge zone-paid" data-i18n="z2_badge">DEPLASARE +100 LEI</span>
+            <h3 data-i18n="z2_title">Arad & Lugoj</h3>
+            <p style="color: var(--text-muted); margin-top: 6px; font-size: 0.92rem;" data-i18n="z2_desc">Arad, Lugoj și localitățile limitrofe (taxă unică de transport per vizită).</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-contracte" class="tab-panel">
+        <div class="info-box" style="text-align: center;">
+          <p style="color: var(--text-muted); margin-bottom: 16px;" data-i18n="ctr_desc">Deschide modelul, completează datele direct pe ecran și salvează ca PDF sau printează cu <strong>Ctrl + P</strong>.</p>
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
+            <button type="button" class="btn btn-outline" onclick="openContract('b2b')" data-i18n="ctr_b2b">📄 Contract Firme / B2B</button>
+            <button type="button" class="btn btn-outline" onclick="openContract('b2c')" data-i18n="ctr_b2c">📄 Contract / Proces-Verbal Persoane Fizice</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-faq" class="tab-panel">
+        <div class="faq-list">
+          <details open>
+            <summary data-i18n="q1_t">Cum se face plata și ce documente primesc?</summary>
+            <p data-i18n="q1_d">Colaborăm legal pe bază de contract de prestări servicii (atât cu firmele, unde impozitul de 10% se reține la sursă, cât și cu persoanele fizice). Plata se face numerar sau prin Revolut (@nitaa2saa), iar la final semnăm procesul-verbal.</p>
+          </details>
+          <details>
+            <summary data-i18n="q2_t">Care este garanția intervenției?</summary>
+            <p data-i18n="q2_d">La finalul lucrării testăm împreună echipamentele. Semnarea procesului-verbal confirmă funcționarea optimă la predare.</p>
+          </details>
+          <details>
+            <summary data-i18n="q3_t">Cum funcționează Suportul Remote (80 lei)?</summary>
+            <p data-i18n="q3_d">Se achită în avans prin Revolut (@nitaa2saa), apoi ne conectăm securizat prin AnyDesk sau TeamViewer.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="despre">
+    <div class="container">
+      <div class="about-compact">
+        <div class="badge" style="margin-bottom: 8px;" data-i18n="ab_badge">Peste 10 ani experiență IT</div>
+        <h2 style="font-size: 1.5rem; margin-bottom: 10px;" data-i18n="ab_title">George Niță — Specialist IT</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="ab_desc">
+          Ofer firmelor mici și utilizatorilor din Timișoara, Arad și Lugoj sprijin tehnic prompt, transparent și fără abonamente lunare inutile — atât pe partea de hardware și rețelistică, cât și software.
+        </p>
+        <div class="contact-strip">
+          <button type="button" class="btn btn-primary" onclick="downloadVCard()" data-i18n="ab_vcard">📲 Salvează contactul (0767 231 199)</button>
+          <a href="https://wa.me." target="_blank" rel="noopener" class="btn btn-whatsapp">💬 WhatsApp</a>
+          <a href="mailto:lighthousetech.tm@gmail.com" class="btn btn-outline">✉️ lighthousetech.tm@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-flex">
+      <div><strong>LIGHTHOUSE TECH — George Niță</strong> • Timișoara, Arad & Lugoj • 0767 231 199</div>
+      <button type="button" class="btn btn-outline" style="padding: 8px 13px; font-size: 0.82rem;" onclick="openModal('gdprModal')" data-i18n="gdpr_btn">
+        🔒 Politică GDPR
+      </button>
+    </div>
+  </footer>
+
+  <a href="https://wa.me." target="_blank" rel="noopener" class="wa-float">💬 WhatsApp</a>
+
+  <div id="contractModal" class="modal-backdrop" onclick="if(event.target===this) closeModal('contractModal')">
+    <div class="modal-window">
+      <div class="modal-toolbar">
+        <strong id="contractModalTitle">Model Contract</strong>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="btn btn-primary" style="padding: 7px 13px; font-size: 0.84rem;" onclick="window.print()">🖨️ Print / PDF (Ctrl+P)</button>
+          <button type="button" class="btn btn-outline" style="padding: 7px 12px; font-size: 0.84rem; background: #fff; color: #0f172a;" onclick="closeModal('contractModal')">✕</button>
+        </div>
+      </div>
+      <div id="contractBody" class="modal-body contract-doc"></div>
+    </div>
+  </div>
+
+  <div id="gdprModal" class="modal-backdrop" onclick="if(event.target===this) closeModal('gdprModal')">
+    <div class="modal-window modal-dark">
+      <div class="modal-toolbar">
+        <strong>Politică de Confidențialitate (GDPR)</strong>
+        <button type="button" class="btn btn-outline" style="padding: 5px 11px; font-size: 0.84rem;" onclick="closeModal('gdprModal')">✕</button>
+      </div>
+      <div class="modal-body gdpr-body">
+        <p><strong>Lighthouse Tech</strong> (reprezentat de <strong>George Niță</strong>, Timișoara, tel. <strong>0767 231 199</strong>, e-mail: <strong>lighthousetech.tm@gmail.com</strong>) respectă confidențialitatea datelor dumneavoastră conform Regulamentului (UE) 2016/679 (GDPR).</p>
+        <h4>1. Date colectate & scopul prelucrării</h4>
+        <ul>
+          <li>Nume, telefon/WhatsApp, e-mail, adresă intervenție și date contractuale — prelucrate strict în baza Art. 6 alin. 1 lit. b și c GDPR pentru ofertare, programarea intervențiilor IT și întocmirea documentelor legale.</li>
+        </ul>
+        <h4>2. Stocare și drepturile dumneavoastră</h4>
+        <p>Nu folosim cookie-uri de urmărire și nu transmitem date către terți. Aveți dreptul de acces, rectificare, ștergere sau opoziție printr-o solicitare la <strong>lighthousetech.tm@gmail.com</strong>.</p>
+        <div style="margin-top: 16px; text-align: right;">
+          <button type="button" class="btn btn-primary" onclick="closeModal('gdprModal')">Am înțeles</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

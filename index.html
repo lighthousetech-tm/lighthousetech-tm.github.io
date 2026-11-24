@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lighthouse Tech — Suport IT Timișoara, Arad & Lugoj | George Niță</title>
+  <meta name="description" content="Soluții IT rapide în Timișoara, Arad și Lugoj. Calculatoare, rețelistică, imprimante și suport remote oferite de George Niță." />
+  <meta property="og:image" content="hero.jpg" />
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">LT</span>
+        <span>LIGHTHOUSE TECH</span>
+      </a>
+      <div class="lang-switch" aria-label="Selector limbă">
+        <button class="lang-btn active" onclick="setLang('ro', this)">RO</button>
+        <button class="lang-btn" onclick="setLang('en', this)">EN</button>
+        <button class="lang-btn" onclick="setLang('fr', this)">FR</button>
+      </div>
+    </div>
+    <nav class="page-nav">
+      <a href="index.html" class="active-page" data-i18n="pg_home">🏠 Acasă</a>
+      <a href="tarife.html" data-i18n="pg_prices">💳 Tarife & Estimator</a>
+      <a href="contact.html" data-i18n="pg_contact">📄 Contracte & Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge" data-i18n="hero_badge">⚡ Suport IT Timișoara, Arad & Lugoj</div>
+        <h1 data-i18n="hero_title">Tehnologia te ține în <span>direcția corectă.</span></h1>
+        <p data-i18n="hero_sub">Calculatoare, rețelistică, imprimante și asistență remote — rapid, transparent și fără abonamente lunare, oferite de George Niță.</p>
+        <div class="hero-actions">
+          <a href="tarife.html" class="btn btn-primary" data-i18n="hero_cta1">Vezi Tarife & Estimator</a>
+          <a href="https://wa.me." target="_blank" rel="noopener" class="btn btn-whatsapp">💬 WhatsApp</a>
+          <a href="mailto:lighthousetech.tm@gmail.com" class="btn btn-outline" data-i18n="hero_email">✉️ E-mail</a>
+        </div>
+
+        <div class="quick-remote-bar">
+          <span style="font-size: 0.88rem; color: var(--text-muted);" data-i18n="rem_bar_txt">🖥️ Ai nevoie de <strong>Suport Remote (80 lei)</strong>? Descarcă programul:</span>
+          <div style="display: flex; gap: 8px;">
+            <a href="https://anydesk.com" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 8px 13px; font-size: 0.84rem;">⬇ AnyDesk</a>
+            <a href="https://teamviewer.com" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 8px 13px; font-size: 0.84rem;">⬇ TeamViewer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-flex">
+      <div><strong>LIGHTHOUSE TECH — George Niță</strong> • Timișoara, Arad & Lugoj</div>
+      <a href="tarife.html" class="btn btn-primary" style="padding: 8px 14px; font-size: 0.84rem;" data-i18n="next_prices">Mergi la Tarife & Estimator →</a>
+    </div>
+  </footer>
+
+  <a href="https://wa.me." target="_blank" rel="noopener" class="wa-float">💬 WhatsApp</a>
+  <script src="main.js"></script>
+</body>
+</html>
