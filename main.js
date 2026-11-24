@@ -336,8 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem('lt_lang') || 'ro';
   const btn = Array.from(document.querySelectorAll('.lang-btn')).find(b => b.textContent.trim().toLowerCase() === saved);
   if (btn) setLang(saved, btn);
-
-  document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+  document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp.com"]').forEach(link => {
     try {
       const parsed = new URL(link.href);
       const msg = parsed.searchParams.get('text');
@@ -348,3 +347,13 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) {}
   });
 });
+
+sendEstimateWhatsApp = function() {
+  if (!currentEstimateSummary) {
+    alert(i18n[currentLang].est_alert);
+    return;
+  }
+  window.location.href = 'https://whatsapp.com' + encodeURIComponent(currentEstimateSummary);
+};
+
+  
