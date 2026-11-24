@@ -475,3 +475,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+function sendEstimateEmail(e) {
+  e.preventDefault();
+  const form = e.target;
+  const nume = form.querySelector('[name="nume"]')?.value.trim() || "";
+  const contact = form.querySelector('[name="contact"]')?.value.trim() || "";
+  const detalii = form.querySelector('[name="detalii"]')?.value.trim() || "";
+  const estimare = currentEstimateSummary || "Neselectat în estimator";
+
+  const subject = "Cerere ofertă IT — " + nume;
+  const body =
+    "Nume / Firmă: " + nume + "\n" +
+    "Contact (Tel / E-mail): " + contact + "\n\n" +
+    "Detalii problemă:\n" + detalii + "\n\n" +
+    "--- Rezumat Estimator ---\n" + estimare;
+
+  window.location.href =
+    "mailto:lighthousetech.tm@://gmail.com" +
+    encodeURIComponent(subject) +
+    "&body=" +
+    encodeURIComponent(body);
+}

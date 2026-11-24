@@ -229,7 +229,8 @@
             Preferi să trimiți cererea pe e-mail? Apasă aici
           </button>
 
-          <form id="emailFormBox" action="https://formsubmit.co" method="POST" class="email-form-box">
+ <form id="emailFormBox" onsubmit="sendEstimateEmail(event)" class="email-form-box">
+
             <input type="hidden" name="_subject" value="Cerere noua oferta - Lighthouse Tech" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="estimare_calculata" id="hiddenEstimateInput" value="Neselectat" />
