@@ -338,21 +338,23 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btn) setLang(saved, btn);
     const waBase = ['https://', 'api.whatsapp', '.com/send?phone=', '40767231199'].join('');
 
-  document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp.com"]').forEach(link => {
-    try {
-      const parsed = new URL(link.href);
-      const msg = parsed.searchParams.get('text');
-      link.href = msg ? waBase + '&text=' + encodeURIComponent(msg) : waBase;
-      link.removeAttribute('target');
-    } catch (e) {}
+    // REPARARE DEFINITIVA WHATSAPP CU MESAJ PRE-COMPLETAT
+  document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp"]').forEach(link => {
+    const rawHref = link.getAttribute('href') || '';
+    const idx = rawHref.indexOf('text=');
+    const msg = idx !== -1 ? rawHref.substring(idx + 5) : '';
+    link.setAttribute('href', msg
+      ? 'whatsapp://send?phone=40767231199&text=' + msg
+      : 'whatsapp://send?phone=40767231199'
+    );
+    link.removeAttribute('target');
   });
 });
 
-sendEstimateWhatsApp = function() {
+function sendEstimateWhatsApp() {
   if (!currentEstimateSummary) {
     alert(i18n[currentLang].est_alert);
     return;
   }
-  const waBase = ['https://', 'api.whatsapp', '.com/send?phone=', '40767231199'].join('');
-  window.location.href = waBase + '&text=' + encodeURIComponent(currentEstimateSummary);
-};
+  window.location.href = 'whatsapp://send?phone=40767231199&text=' + encodeURIComponent(currentEstimateSummary);
+}
