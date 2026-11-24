@@ -6,7 +6,7 @@ function switchTab(tabId, btn) {
   document.getElementById(tabId).classList.add('active');
 }
 
-// 2. ESTIMATOR INTERVENȚIE & REVOLUT
+// 2. ESTIMATOR INTERVENTIE & REVOLUT
 let currentEstimateSummary = "";
 let currentLang = "ro";
 
@@ -55,16 +55,16 @@ function updateEstimate() {
   const total = basePrice + travelCost;
   const zoneLabel = zoneExtra === 0 ? "Timișoara / limitrof (0 lei)" : "Arad / Lugoj (+100 lei)";
 
-  estText.textContent = `${pkgName} — ${total} lei`;
+  estText.textContent = pkgName + " — " + total + " lei";
 
   const tasksList = checked.map(cb => cb.dataset.label).join(", ");
   currentEstimateSummary =
-    `Salut George! Am folosit estimatorul Lighthouse Tech:\n` +
-    `• Servicii: ${tasksList}\n` +
-    `• Pachet recomandat: ${pkgName}\n` +
-    `• Zonă: ${zoneLabel}\n` +
-    `• Plată preferată: ${payment}\n` +
-    `• Total estimat: ${total} lei`;
+    "Salut George! Am folosit estimatorul Lighthouse Tech:\n" +
+    "• Servicii: " + tasksList + "\n" +
+    "• Pachet recomandat: " + pkgName + "\n" +
+    "• Zonă: " + zoneLabel + "\n" +
+    "• Plată preferată: " + payment + "\n" +
+    "• Total estimat: " + total + " lei";
 
   if (hiddenInput) hiddenInput.value = currentEstimateSummary.replace(/\n/g, " | ");
 }
@@ -74,8 +74,7 @@ function sendEstimateWhatsApp() {
     alert(i18n[currentLang].est_alert);
     return;
   }
-  const url = `https://wa.me{encodeURIComponent(currentEstimateSummary)}`;
-  window.open(url, '_blank', 'noopener');
+  window.location.href = "https://whatsapp.com" + encodeURIComponent(currentEstimateSummary);
 }
 
 function copyRevTag(btn) {
@@ -97,20 +96,16 @@ const contractsData = {
       <h4>I. PĂRȚILE CONTRACTANTE</h4>
       <p><strong>1. PRESTATOR:</strong> <strong>George Niță</strong> (Lighthouse Tech), Timișoara, jud. Timiș, tel. 0767 231 199, e-mail: lighthousetech.tm@gmail.com, în calitate de Prestator,</p>
       <p><strong>2. BENEFICIAR:</strong> Societatea <input class="doc-input" style="min-width:220px" placeholder="Nume Firmă SRL">, sediul în <input class="doc-input" style="min-width:200px" placeholder="Localitate, Adresă">, CUI <input class="doc-input" style="min-width:105px" placeholder="RO________">, Reg. Com. <input class="doc-input" style="min-width:115px" placeholder="J35/____/____">, reprezentată prin <input class="doc-input" style="min-width:165px" placeholder="Nume Reprezentant">.</p>
-
       <h4>II. OBIECTUL CONTRACTULUI</h4>
       <p>Prestatorul execută pentru Beneficiar servicii de asistență tehnică IT, mentenanță hardware/software, configurare echipamente și/sau lucrări de rețelistică: <input class="doc-input" style="width:100%; margin-top:4px" placeholder="Descriere scurtă intervenție..."></p>
-
       <h4>III. PREȚUL ȘI PLATA</h4>
       <ul>
         <li>Tariful convenit este de <input class="doc-input" style="min-width:75px" placeholder="_____"> lei (conform pachetului ales + eventuală taxă deplasare 100 lei Arad/Lugoj).</li>
         <li>Pentru persoane juridice, impozitul pe venit de 10% se reține la sursă de către Beneficiar conform Codului Fiscal.</li>
         <li>Plata se face la final prin numerar sau Revolut (@nitaa2saa), pe baza Procesului-Verbal.</li>
       </ul>
-
       <h4>IV. GARANȚIE ȘI CONFIDENȚIALITATE</h4>
       <p>La final părțile testează împreună echipamentele și semnează Procesul-Verbal care confirmă funcționarea optimă la predare. Prestatorul păstrează confidențialitatea deplină asupra datelor Beneficiarului.</p>
-
       <div class="sign-grid">
         <div><strong>PRESTATOR,</strong><br>George Niță (Lighthouse Tech)<br><br>Semnătura: ___________________</div>
         <div><strong>BENEFICIAR,</strong><br><input class="doc-input" style="min-width:165px" placeholder="Nume / Firmă"><br><br>Semnătura / Ștampila: _________</div>
@@ -125,20 +120,16 @@ const contractsData = {
       <h4>I. PĂRȚILE</h4>
       <p><strong>1. PRESTATOR:</strong> <strong>George Niță</strong> (Lighthouse Tech), Timișoara, tel. 0767 231 199, e-mail: lighthousetech.tm@gmail.com.</p>
       <p><strong>2. BENEFICIAR:</strong> Dl./Dna. <input class="doc-input" style="min-width:200px" placeholder="Nume și Prenume">, domiciliat(ă) în <input class="doc-input" style="min-width:200px" placeholder="Localitate, Adresă">, tel. <input class="doc-input" style="min-width:115px" placeholder="07________">.</p>
-
       <h4>II. SERVICII PRESTATE</h4>
       <p>Operațiuni tehnice IT efectuate (instalare/optimizare PC, configurare router Wi-Fi, instalare imprimantă, remediere software/hardware):</p>
       <p><input class="doc-input" style="width:100%" placeholder="Detalii operațiuni efectuate..."></p>
-
       <h4>III. TARIF ȘI ACHITARE</h4>
       <p>Valoarea intervenției: <input class="doc-input" style="min-width:75px" placeholder="_____"> lei, achitată prin:
         <label style="margin-left:8px"><input type="checkbox"> Numerar</label>
         <label style="margin-left:10px"><input type="checkbox"> Revolut (@nitaa2saa)</label>
       </p>
-
       <h4>IV. PROCES-VERBAL DE PREDARE-PRIMIRE</h4>
       <p>Subsemnatul(a) Beneficiar confirm că echipamentele și serviciile de mai sus au fost testate în prezența mea și funcționează în parametri optimi.</p>
-
       <div class="sign-grid">
         <div><strong>PRESTATOR,</strong><br>George Niță<br><br>Semnătura: ___________________</div>
         <div><strong>BENEFICIAR,</strong><br><input class="doc-input" style="min-width:165px" placeholder="Nume Beneficiar"><br><br>Semnătura: ___________________</div>
@@ -196,14 +187,16 @@ function downloadVCard() {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
-// 5. TRADUCERI COMPLETE 100% (RO / EN / FR)
+// 5. TRADUCERI COMPLETE (RO / EN / FR)
 const i18n = {
   ro: {
-    nav_pricing: "Servicii & Tarife", nav_estimator: "Estimator", nav_info: "Zone & Contracte", nav_about: "Contact",
+    pg_home: "🏠 Acasă", pg_prices: "💳 Tarife & Estimator", pg_contact: "📄 Contracte & Contact",
+    rem_bar_txt: "🖥️ Ai nevoie de <strong>Suport Remote (80 lei)</strong>? Descarcă programul:",
+    next_prices: "Mergi la Tarife & Estimator →", next_contact: "Mergi la Contracte & Contact →",
     hero_badge: "⚡ Suport IT Timișoara, Arad & Lugoj",
     hero_title: "Tehnologia te ține în <span>direcția corectă.</span>",
     hero_sub: "Calculatoare, rețelistică, imprimante și asistență remote — rapid, transparent și fără abonamente lunare, oferite de George Niță.",
-    hero_cta1: "Calculează intervenția", hero_email: "✉️ E-mail",
+    hero_cta1: "Vezi Tarife & Estimator", hero_email: "✉️ E-mail",
     prc_title: "SERVICII & TARIFE LA CERERE", prc_sub: "Fără abonamente lunare. Plătești doar când ai nevoie.",
     pop_tag: "Cel mai popular",
     c1_title: "💻 SUPORT REMOTE", c1_sub: "/ intervenție", c1_pill: "🌐 De la distanță (0 lei deplasare)",
@@ -238,11 +231,13 @@ const i18n = {
     ab_vcard: "📲 Salvează contactul (0767 231 199)", gdpr_btn: "🔒 Politică GDPR"
   },
   en: {
-    nav_pricing: "Services & Pricing", nav_estimator: "Estimator", nav_info: "Areas & Contracts", nav_about: "Contact",
+    pg_home: "🏠 Home", pg_prices: "💳 Pricing & Estimator", pg_contact: "📄 Contracts & Contact",
+    rem_bar_txt: "🖥️ Need <strong>Remote Support (80 lei)</strong>? Download tool:",
+    next_prices: "Go to Pricing & Estimator →", next_contact: "Go to Contracts & Contact →",
     hero_badge: "⚡ IT Support Timișoara, Arad & Lugoj",
     hero_title: "Technology keeps you on the <span>right course.</span>",
     hero_sub: "Computers, networking, printers and remote support — fast, transparent and with no monthly subscriptions, by George Niță.",
-    hero_cta1: "Estimate intervention", hero_email: "✉️ E-mail",
+    hero_cta1: "View Pricing & Estimator", hero_email: "✉️ E-mail",
     prc_title: "ON-DEMAND SERVICES & PRICING", prc_sub: "No monthly subscriptions. Pay only when you need help.",
     pop_tag: "Most popular",
     c1_title: "💻 REMOTE SUPPORT", c1_sub: "/ session", c1_pill: "🌐 Remote (0 lei travel fee)",
@@ -277,11 +272,13 @@ const i18n = {
     ab_vcard: "📲 Save contact (0767 231 199)", gdpr_btn: "🔒 GDPR Policy"
   },
   fr: {
-    nav_pricing: "Services & Tarifs", nav_estimator: "Estimateur", nav_info: "Zones & Contrats", nav_about: "Contact",
+    pg_home: "🏠 Accueil", pg_prices: "💳 Tarifs & Estimateur", pg_contact: "📄 Contrats & Contact",
+    rem_bar_txt: "🖥️ Besoin de <strong>Support à Distance (80 lei)</strong> ? Téléchargez :",
+    next_prices: "Voir Tarifs & Estimateur →", next_contact: "Voir Contrats & Contact →",
     hero_badge: "⚡ Support IT Timișoara, Arad & Lugoj",
     hero_title: "La technologie vous garde dans la <span>bonne direction.</span>",
     hero_sub: "Ordinateurs, réseaux, imprimantes et assistance à distance — rapide, transparent et sans abonnement mensuel, par George Niță.",
-    hero_cta1: "Estimer l'intervention", hero_email: "✉️ E-mail",
+    hero_cta1: "Voir Tarifs & Estimateur", hero_email: "✉️ E-mail",
     prc_title: "SERVICES & TARIFS À LA DEMANDE", prc_sub: "Sans abonnement mensuel. Payez uniquement en cas de besoin.",
     pop_tag: "Le plus populaire",
     c1_title: "💻 SUPPORT À DISTANCE", c1_sub: "/ intervention", c1_pill: "🌐 À distance (0 lei déplacement)",
@@ -319,6 +316,7 @@ const i18n = {
 
 function setLang(lang, btn) {
   currentLang = lang;
+  localStorage.setItem('lt_lang', lang);
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   const dict = i18n[lang];
@@ -330,55 +328,23 @@ function setLang(lang, btn) {
     const key = el.getAttribute('data-i18n-ph');
     if (dict[key]) el.placeholder = dict[key];
   });
-  updateEstimate();
+  if (document.getElementById('estText')) updateEstimate();
 }
-// PĂSTRARE LIMBĂ ÎNTRE PAGINI + TRADUCERE MENIU PAGINI
-Object.assign(i18n.ro, { pg_home: "🏠 Acasă", pg_prices: "💳 Tarife & Estimator", pg_contact: "📄 Contracte & Contact", rem_bar_txt: "🖥️ Ai nevoie de <strong>Suport Remote (80 lei)</strong>? Descarcă programul:", next_prices: "Mergi la Tarife & Estimator →", next_contact: "Mergi la Contracte & Contact →" });
-Object.assign(i18n.en, { pg_home: "🏠 Home", pg_prices: "💳 Pricing & Estimator", pg_contact: "📄 Contracts & Contact", rem_bar_txt: "🖥️ Need <strong>Remote Support (80 lei)</strong>? Download tool:", next_prices: "Go to Pricing & Estimator →", next_contact: "Go to Contracts & Contact →" });
-Object.assign(i18n.fr, { pg_home: "🏠 Accueil", pg_prices: "💳 Tarifs & Estimateur", pg_contact: "📄 Contrats & Contact", rem_bar_txt: "🖥️ Besoin de <strong>Support à Distance (80 lei)</strong> ? Téléchargez :", next_prices: "Voir Tarifs & Estimateur →", next_contact: "Voir Contrats & Contact →" });
 
-const origSetLang = setLang;
-setLang = function(lang, btn) {
-  localStorage.setItem('lt_lang', lang);
-  origSetLang(lang, btn);
-};
+// 6. INITIALIZARE LIMBĂ & REPARARE LINK-URI WHATSAPP
 document.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem('lt_lang') || 'ro';
   const btn = Array.from(document.querySelectorAll('.lang-btn')).find(b => b.textContent.trim().toLowerCase() === saved);
-  if (btn) origSetLang(saved, btn);
-});
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('a[href*="wa.me/"]').forEach(link => {
-    const parts = link.href.split('?text=');
-    const msg = parts[1] ? `&text=${parts[1]}` : '';
-    link.href = `https://whatsapp.com{msg}`;
-  });
-});
+  if (btn) setLang(saved, btn);
 
-sendEstimateWhatsApp = function() {
-  if (!currentEstimateSummary) {
-    alert(i18n[currentLang].est_alert);
-    return;
-  }
-  const url = `https://whatsapp.com{encodeURIComponent(currentEstimateSummary)}`;
-  window.open(url, '_blank', 'noopener');
-};
-// REPARARE WHATSAPP PE MOBIL & DESKTOP
-document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
-    const parsed = new URL(link.href);
-    const msg = parsed.searchParams.get('text');
-    link.href = msg
-      ? 'https://whatsapp.com' + encodeURIComponent(msg)
-      : 'https://whatsapp.com';
-    link.removeAttribute('target');
+    try {
+      const parsed = new URL(link.href);
+      const msg = parsed.searchParams.get('text');
+      link.href = msg
+        ? 'https://whatsapp.com' + encodeURIComponent(msg)
+        : 'https://whatsapp.com';
+      link.removeAttribute('target');
+    } catch (e) {}
   });
 });
-
-sendEstimateWhatsApp = function() {
-  if (!currentEstimateSummary) {
-    alert(i18n[currentLang].est_alert);
-    return;
-  }
-  window.location.href = 'https://whatsapp.com' + encodeURIComponent(currentEstimateSummary);
-};
