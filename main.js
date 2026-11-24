@@ -363,3 +363,24 @@ sendEstimateWhatsApp = function() {
   const url = `https://whatsapp.com{encodeURIComponent(currentEstimateSummary)}`;
   window.open(url, '_blank', 'noopener');
 };
+// REPARARE WHATSAPP PE MOBIL & DESKTOP
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp.com"]').forEach(link => {
+    let text = '';
+    if (link.href.includes('text=')) {
+      text = link.href.split('text=')[1].split('&')[0];
+    }
+    link.href = text
+      ? `https://whatsapp.com{text}`
+      : `https://whatsapp.com`;
+    link.removeAttribute('target');
+  });
+});
+
+sendEstimateWhatsApp = function() {
+  if (!currentEstimateSummary) {
+    alert(i18n[currentLang].est_alert);
+    return;
+  }
+  window.location.href = `https://whatsapp.com{encodeURIComponent(currentEstimateSummary)}`;
+};
