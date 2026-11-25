@@ -129,6 +129,55 @@
       <div class="bonus-note" data-i18n="bonus_txt">
         <strong>BONUS LA PACHETUL DE 8 ORE:</strong> Primești gratuit o intervenție de Suport Remote (60 min) pentru reglaje ulterioare.
       </div>
+            <div class="section-head" style="margin-top: 44px;">
+        <h2 data-i18n="b2c_title">PERSOANE FIZICE & PC-URI DE LA ZERO</h2>
+        <p data-i18n="b2c_sub">Tarife dedicate pentru acasă, configurări online și asamblare sisteme personalizate.</p>
+      </div>
+
+      <div class="pricing-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+        <div class="price-card">
+          <h3 data-i18n="p_cfg_t">CONFIGURARE PC ONLINE</h3>
+          <div class="price-val">70 lei</div>
+          <div class="price-sub" data-i18n="p_cfg_s">/ listă piese la comandă (24h)</div>
+          <span class="travel-pill" style="background: rgba(56,189,248,0.12); color: var(--primary); border-color: rgba(56,189,248,0.3);" data-i18n="p_cfg_p">Online • Plată în avans Revolut</span>
+          <ul class="price-features">
+            <li data-i18n="p_cfg_f1">Listă completă componente 100% compatibile pe buget</li>
+            <li data-i18n="p_cfg_f2">Linkuri directe către magazine din România</li>
+            <li data-i18n="p_cfg_f3">Optimizat pentru Gaming, Editare Video sau Office</li>
+            <li data-i18n="p_cfg_f4">Bonus: cei 70 lei se scad dacă asamblezi PC-ul la noi</li>
+          </ul>
+          <a href="https://wa.me" class="btn btn-outline" data-i18n="p_cfg_btn">Cere listă piese</a>
+        </div>
+
+        <div class="price-card">
+          <h3 data-i18n="p_home_t">INTERVENȚIE ACASĂ (B2C)</h3>
+          <div class="price-val">160 lei</div>
+          <div class="price-sub" data-i18n="p_home_s">/ până la 90 min (1 PC / router)</div>
+          <span class="travel-pill" data-i18n="p_home_p">Timișoara 0 lei • +100 lei Arad/Lugoj</span>
+          <ul class="price-features">
+            <li data-i18n="p_home_f1">Tarif redus dedicat utilizatorilor persoane fizice</li>
+            <li data-i18n="p_home_f2">Curățare praf, schimbare pastă, instalare Windows</li>
+            <li data-i18n="p_home_f3">Configurare router Wi-Fi sau imprimantă acasă</li>
+            <li data-i18n="p_home_f4">Ora suplimentară: +80 lei / oră</li>
+          </ul>
+          <a href="https://wa.me" class="btn btn-primary" data-i18n="p_home_btn">Programează acasă</a>
+        </div>
+
+        <div class="price-card">
+          <h3 data-i18n="p_build_t">ASAMBLARE PC DE LA ZERO</h3>
+          <div class="price-val">300 lei</div>
+          <div class="price-sub" data-i18n="p_build_s">/ sistem complet (manoperă)</div>
+          <span class="travel-pill" data-i18n="p_build_p">230 lei dacă ai luat configurarea online</span>
+          <ul class="price-features">
+            <li data-i18n="p_build_f1">Asamblare fizică atentă + Wire Management curat</li>
+            <li data-i18n="p_build_f2">Update BIOS, activare profil RAM (XMP/EXPO)</li>
+            <li data-i18n="p_build_f3">Instalare sistem operare, drivere și testare stres</li>
+            <li data-i18n="p_build_f4">Piesele sunt aduse de client sau achitate în avans</li>
+          </ul>
+          <a href="https://wa.me" class="btn btn-outline" data-i18n="p_build_btn">Rezervă asamblare</a>
+        </div>
+      </div>
+
     </div>
   </section>
   <section class="section" id="estimator" style="padding-top: 10px;">
@@ -139,7 +188,14 @@
       </div>
 
       <div class="estimator-box">
-        <div class="check-list">
+                <div class="check-list">
+          <label class="check-item">
+            <span class="check-left">
+              <input type="checkbox" class="task-cb" value="cfg_online" data-label="Configurare PC Online (listă piese compatibile)" onchange="updateEstimate()">
+              <span data-i18n="chk_cfg">Configurare PC Online (listă piese compatibile la comandă)</span>
+            </span>
+            <span class="check-tag">70 lei (avans)</span>
+          </label>
           <label class="check-item">
             <span class="check-left">
               <input type="checkbox" class="task-cb" value="remote" data-label="Suport software / e-mail de la distanță (60 min)" onchange="updateEstimate()">
@@ -149,25 +205,40 @@
           </label>
           <label class="check-item">
             <span class="check-left">
-              <input type="checkbox" class="task-cb" value="rapid" data-label="Diagnosticare PC (1-2 stații) sau instalare imprimantă" onchange="updateEstimate()">
-              <span data-i18n="chk_2">Diagnosticare PC (1–2 stații) sau instalare imprimantă</span>
+              <input type="checkbox" class="task-cb" value="home_b2c" data-label="Intervenție acasă Persoane Fizice (1 PC / router / curățare)" onchange="updateEstimate()">
+              <span data-i18n="chk_home">Intervenție acasă Persoane Fizice (1 PC / router / curățare)</span>
+            </span>
+            <span class="check-tag">160 lei (+100 Arad/Lugoj)</span>
+          </label>
+          <label class="check-item">
+            <span class="check-left">
+              <input type="checkbox" class="task-cb" value="rapid" data-label="Intervenție Rapidă Birou (1-2 stații / imprimantă)" onchange="updateEstimate()">
+              <span data-i18n="chk_2">Intervenție Rapidă Birou (1–2 stații sau imprimantă)</span>
             </span>
             <span class="check-tag">250 lei (+100 Arad/Lugoj)</span>
           </label>
           <label class="check-item">
             <span class="check-left">
-              <input type="checkbox" class="task-cb" value="mentenanta" data-label="Optimizare până la 5 PC-uri / configurare Wi-Fi & LAN" onchange="updateEstimate()">
-              <span data-i18n="chk_3">Optimizare până la 5 PC-uri / configurare Wi-Fi & LAN</span>
+              <input type="checkbox" class="task-cb" value="build_pc" data-label="Asamblare PC de la zero + instalare sistem" onchange="updateEstimate()">
+              <span data-i18n="chk_build">Asamblare PC de la zero + instalare Windows & drivere</span>
+            </span>
+            <span class="check-tag">300 lei (230 cu listă)</span>
+          </label>
+          <label class="check-item">
+            <span class="check-left">
+              <input type="checkbox" class="task-cb" value="mentenanta" data-label="Mentenanță Onsite (până la 5 PC-uri / Wi-Fi & LAN)" onchange="updateEstimate()">
+              <span data-i18n="chk_3">Mentenanță Onsite (până la 5 PC-uri / Wi-Fi & LAN)</span>
             </span>
             <span class="check-tag">400 lei (+100 Arad/Lugoj)</span>
           </label>
           <label class="check-item">
             <span class="check-left">
-              <input type="checkbox" class="task-cb" value="full" data-label="Tras cabluri, pat cablu, mufare / configurare birou nou" onchange="updateEstimate()">
-              <span data-i18n="chk_4">Tras cabluri, pat cablu, mufare / configurare birou nou</span>
+              <input type="checkbox" class="task-cb" value="full" data-label="Zi Completă & Rețea (cablare, pat cablu, mufare)" onchange="updateEstimate()">
+              <span data-i18n="chk_4">Zi Completă & Rețea (tras cabluri, pat cablu, mufare)</span>
             </span>
             <span class="check-tag">750 lei (+100 Arad/Lugoj)</span>
           </label>
+        </div>
         </div>
 
         <div class="estimator-options">

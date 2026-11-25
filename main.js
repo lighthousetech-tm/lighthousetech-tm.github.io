@@ -41,14 +41,30 @@ function updateEstimate() {
     pkgName = "Zi Completă & Rețea (8 ore)";
     basePrice = 750;
     appliesTravel = true;
-  } else if (types.includes('mentenanta') || checked.length >= 3) {
+  } else if (types.includes('mentenanta')) {
     pkgName = "Mentenanță Onsite (până la 4 ore / max. 5 stații)";
     basePrice = 400;
     appliesTravel = true;
-  } else if (types.includes('rapid') || checked.length === 2) {
-    pkgName = "Intervenție Rapidă (până la 2 ore / 1-2 stații)";
+  } else if (types.includes('build_pc') && types.includes('cfg_online')) {
+    pkgName = "Configurare PC Online + Asamblare de la zero (reducere 70 lei inclusă)";
+    basePrice = 300;
+    appliesTravel = true;
+  } else if (types.includes('build_pc')) {
+    pkgName = "Asamblare PC de la zero + instalare sistem";
+    basePrice = 300;
+    appliesTravel = true;
+  } else if (types.includes('rapid')) {
+    pkgName = "Intervenție Rapidă Birou (până la 2 ore / 1-2 stații)";
     basePrice = 250;
     appliesTravel = true;
+  } else if (types.includes('home_b2c')) {
+    pkgName = "Intervenție Acasă Persoane Fizice (până la 90 min)";
+    basePrice = 160;
+    appliesTravel = true;
+  } else if (types.includes('cfg_online') && types.length === 1) {
+    pkgName = "Configurare PC Online (listă piese compatibile)";
+    basePrice = 70;
+    appliesTravel = false;
   }
 
   const travelCost = appliesTravel ? zoneExtra : 0;
@@ -69,13 +85,26 @@ function updateEstimate() {
   if (hiddenInput) hiddenInput.value = currentEstimateSummary.replace(/\n/g, " | ");
 }
 
-function sendEstimateWhatsApp() {
-  if (!currentEstimateSummary) {
-    alert(i18n[currentLang].est_alert);
-    return;
-  }
-  const url = 'https://wa.me' + encodeURIComponent(currentEstimateSummary);
-  window.open(url, '_blank', 'noopener');
+function sendEstimateEmail(e) {
+  e.preventDefault();
+  const form = e.target;
+  const nume = form.querySelector('[name="nume"]')?.value.trim() || "";
+  const contact = form.querySelector('[name="contact"]')?.value.trim() || "";
+  const detalii = form.querySelector('[name="detalii"]')?.value.trim() || "";
+  const estimare = currentEstimateSummary || "Neselectat în estimator";
+
+  const subject = "Cerere ofertă IT — " + nume;
+  const body =
+    "Nume / Firmă: " + nume + "\n" +
+    "Contact (Tel / E-mail): " + contact + "\n\n" +
+    "Detalii problemă:\n" + detalii + "\n\n" +
+    "--- Rezumat Estimator ---\n" + estimare;
+
+  window.location.href =
+    "mailto:lighthousetech.tm@://gmail.com" +
+    encodeURIComponent(subject) +
+    "&body=" +
+    encodeURIComponent(body);
 }
 
 function copyRevTag(btn) {
@@ -85,7 +114,6 @@ function copyRevTag(btn) {
     setTimeout(() => btn.textContent = old, 2000);
   });
 }
-
 // 3. CONTRACTE POP-UP EDITABILE (PRINT / CTRL+P PDF)
 const todayStr = new Date().toLocaleDateString('ro-RO');
 
@@ -123,16 +151,16 @@ const contractsData = {
       <p><strong>1. PRESTATOR:</strong> <strong>George Niță</strong> (Lighthouse Tech), Timișoara, tel. 0767 231 199, e-mail: lighthousetech.tm@gmail.com.</p>
       <p><strong>2. BENEFICIAR:</strong> Dl./Dna. <input class="doc-input" style="min-width:200px" placeholder="Nume și Prenume">, domiciliat(ă) în <input class="doc-input" style="min-width:200px" placeholder="Localitate, Adresă">, tel. <input class="doc-input" style="min-width:115px" placeholder="07________">.</p>
       <h4>II. SERVICII PRESTATE</h4>
-      <p>Operațiuni tehnice IT efectuate (instalare/optimizare PC, configurare router Wi-Fi, instalare imprimantă, remediere software/hardware):</p>
-      <p><input class="doc-input" style="width:100%" placeholder="Detalii operațiuni efectuate..."></p>
-      <h4>III. TARIF, MATERIALE ȘI ACHITARE</h4>
-      <p>Valoarea manoperei: <input class="doc-input" style="min-width:75px" placeholder="_____"> lei (ore suplimentare doar cu acordul Beneficiarului: +100 lei/oră onsite, +80 lei/oră remote). Eventualele materiale necesare sunt asigurate de Beneficiar sau achitate în avans pe bază de bon fiscal.</p>
+      <p>Operațiuni tehnice IT efectuate (intervenție acasă, curățare/optimizare PC, instalare Windows/drivere, configurare router Wi-Fi, asamblare PC de la zero din componente):</p>
+      <p><input class="doc-input" style="width:100%" placeholder="Detalii operațiuni efectuate / configurație PC..."></p>
+      <h4>III. TARIF, PIESE/MATERIALE ȘI ACHITARE</h4>
+      <p>Valoarea manoperei: <input class="doc-input" style="min-width:75px" placeholder="_____"> lei (ore suplimentare doar cu acordul Beneficiarului: +80 lei/oră). Componentele hardware sau materialele necesare sunt asigurate de Beneficiar înainte de lucrare sau achitate 100% în avans pe bază de bon/factură.</p>
       <p>Achitată prin:
         <label style="margin-left:8px"><input type="checkbox"> Numerar</label>
         <label style="margin-left:10px"><input type="checkbox"> Revolut (@nitaa2saa)</label>
       </p>
       <h4>IV. GARANȚIE ȘI PROCES-VERBAL DE PREDARE-PRIMIRE</h4>
-      <p>Subsemnatul(a) Beneficiar confirm că echipamentele și serviciile de mai sus au fost testate în prezența mea și funcționează în parametri optimi. Lucrările beneficiază de <strong>garanție 30 de zile pe manoperă</strong>.</p>
+      <p>Subsemnatul(a) Beneficiar confirm că echipamentele și serviciile de mai sus au fost testate în prezența mea și funcționează în parametri optimi. Manopera beneficiază de <strong>garanție 30 de zile</strong> (piesele noi beneficiază de garanția producătorului/magazinului).</p>
       <div class="sign-grid">
         <div><strong>PRESTATOR,</strong><br>George Niță<br><br>Semnătura: ___________________</div>
         <div><strong>BENEFICIAR,</strong><br><input class="doc-input" style="min-width:165px" placeholder="Nume Beneficiar"><br><br>Semnătura: ___________________</div>
@@ -239,9 +267,28 @@ const i18n = {
     term_mat: "<strong>Materiale și consumabile</strong>Tarifele afișate reprezintă manopera. Cablurile UTP, mufele RJ45, patul de cablu, prizele sau componentele hardware trebuie asigurate de client înainte de intervenție sau achitate în avans pentru achiziție pe baza bonului/facturii.",
     term_extra: "<strong>Ore suplimentare și garanție</strong>Dacă lucrarea depășește durata pachetului ales, prelungirea se face doar cu acordul tău (+80 lei/oră remote, +100 lei/oră onsite). Toate lucrările beneficiază de 30 de zile garanție pe manoperă.",
     bonus_txt: "<strong>BONUS LA PACHETUL DE 8 ORE:</strong> Primești gratuit o intervenție de Suport Remote (60 min) pentru reglaje ulterioare.",
+    b2c_title: "PERSOANE FIZICE & PC-URI DE LA ZERO",
+    b2c_sub: "Tarife dedicate pentru acasă, configurări online și asamblare sisteme personalizate.",
+    p_cfg_t: "CONFIGURARE PC ONLINE", p_cfg_s: "/ listă piese la comandă (24h)", p_cfg_p: "Online • Plată în avans Revolut",
+    p_cfg_f1: "Listă completă componente 100% compatibile pe buget", p_cfg_f2: "Linkuri directe către magazine din România",
+    p_cfg_f3: "Optimizat pentru Gaming, Editare Video sau Office", p_cfg_f4: "Bonus: cei 70 lei se scad dacă asamblezi PC-ul la noi",
+    p_cfg_btn: "Cere listă piese",
+    p_home_t: "INTERVENȚIE ACASĂ (B2C)", p_home_s: "/ până la 90 min (1 PC / router)", p_home_p: "Timișoara 0 lei • +100 lei Arad/Lugoj",
+    p_home_f1: "Tarif redus dedicat utilizatorilor persoane fizice", p_home_f2: "Curățare praf, schimbare pastă, instalare Windows",
+    p_home_f3: "Configurare router Wi-Fi sau imprimantă acasă", p_home_f4: "Ora suplimentară: +80 lei / oră",
+    p_home_btn: "Programează acasă",
+    p_build_t: "ASAMBLARE PC DE LA ZERO", p_build_s: "/ sistem complet (manoperă)", p_build_p: "230 lei dacă ai luat configurarea online",
+    p_build_f1: "Asamblare fizică atentă + Wire Management curat", p_build_f2: "Update BIOS, activare profil RAM (XMP/EXPO)",
+    p_build_f3: "Instalare sistem operare, drivere și testare stres", p_build_f4: "Piesele sunt aduse de client sau achitate în avans",
+    p_build_btn: "Rezervă asamblare",
     est_title: "ESTIMATOR INTERVENȚIE", est_sub: "Bifează ce ai nevoie și află imediat pachetul recomandat și costul estimat.",
+    chk_cfg: "Configurare PC Online (listă piese compatibile la comandă)",
     chk_1: "Suport software / e-mail de la distanță (până la 60 min)", tag_1: "80 lei",
-    chk_2: "Diagnosticare PC (1–2 stații) sau instalare imprimantă", chk_3: "Optimizare până la 5 PC-uri / configurare Wi-Fi & LAN", chk_4: "Tras cabluri, pat cablu, mufare / configurare birou nou",
+    chk_home: "Intervenție acasă Persoane Fizice (1 PC / router / curățare)",
+    chk_2: "Intervenție Rapidă Birou (1–2 stații sau imprimantă)",
+    chk_build: "Asamblare PC de la zero + instalare Windows & drivere",
+    chk_3: "Mentenanță Onsite (până la 5 PC-uri / Wi-Fi & LAN)",
+    chk_4: "Zi Completă & Rețea (tras cabluri, pat cablu, mufare)",
     zone_grp: "Zonă intervenție", zone_tm: "Timișoara și limitrof (0 lei deplasare)", zone_al: "Arad / Lugoj (+100 lei deplasare)",
     pay_grp: "Plată preferată", pay_cash: "Numerar (Cash)",
     rev_title: "Plată rapidă Revolut — George Niță (@nitaa2saa)", rev_sub: "Scanează codul QR sau folosește linkul direct pentru transfer:", rev_copy: "Copiază @nitaa2saa",
@@ -257,11 +304,11 @@ const i18n = {
     q1_t: "Cum se face plata și ce documente primesc?", q1_d: "Colaborăm legal pe bază de contract de prestări servicii (atât cu firmele, unde impozitul de 10% se reține la sursă, cât și cu persoanele fizice). Plata se face numerar sau prin Revolut (@nitaa2saa), iar la final semnăm procesul-verbal.",
     q2_t: "Care este garanția intervenției?", q2_d: "La finalul lucrării testăm împreună echipamentele și semnăm procesul-verbal. Toate lucrările au garanție 30 de zile pe manoperă — dacă problema reapare, revenim și o remediem gratuit.",
     q3_t: "Cum funcționează Suportul Remote (80 lei) și cât durează?", q3_d: "Tariful de 80 lei acoperă o sesiune de până la 60 de minute pe un calculator (prin AnyDesk sau TeamViewer) și se achită în avans prin Revolut (@nitaa2saa). Dacă intervenția necesită mai mult timp, prelungirea se face doar cu acordul tău (+80 lei/oră).",
-    q4_t: "Materialele (cabluri, mufe, pat cablu) sunt incluse în preț?", q4_d: "Nu, tarifele afișate acoperă exclusiv manopera. Materialele necesare trebuie asigurate de client înainte de intervenție sau achitate în avans pentru achiziție pe baza bonului/facturii.",
-    ab_badge: "Peste 10 ani experiență IT", ab_title: "George Niță — Specialist IT",
-    ab_desc: "Ofer firmelor mici și utilizatorilor din Timișoara, Arad și Lugoj sprijin tehnic prompt, transparent și fără abonamente lunare inutile — atât pe partea de hardware și rețelistică, cât și software.",
-    ab_vcard: "Salvează contactul (0767 231 199)", gdpr_btn: "Politică GDPR"
-  },
+q4_t: "Materialele (cabluri, mufe, pat cablu) sunt incluse în preț?", q4_d: "Nu, tarifele afișate acoperă exclusiv manopera. Materialele necesare trebuie asigurate de client înainte de intervenție sau achitate în avans pentru achiziție pe baza bonului/facturii.",
+ab_badge: "Peste 10 ani experiență IT", ab_title: "George Niță — Specialist IT",
+ab_desc: "Ofer firmelor mici și utilizatorilor din Timișoara, Arad și Lugoj sprijin tehnic prompt, transparent și fără abonamente lunare inutile — atât pe partea de hardware și rețelistică, cât și software.",
+ab_vcard: "Salvează contactul (0767 231 199)", gdpr_btn: "Politică GDPR"
+},
   en: {
     pg_home: "Home", pg_prices: "Pricing & Estimator", pg_contact: "Contracts & Contact",
     rem_bar_txt: "Need <strong>Remote Support (80 lei / 60 min)</strong>? Download tool:",
@@ -309,9 +356,28 @@ const i18n = {
     term_mat: "<strong>Materials & consumables</strong>Listed prices cover labor only. Cables, RJ45 plugs, cable ducts, sockets or hardware parts must be provided by the client beforehand or paid in advance for purchase against receipt/invoice.",
     term_extra: "<strong>Extra hours & warranty</strong>If work exceeds the chosen package duration, extra hours apply only with your prior consent (+80 lei/h remote, +100 lei/h on-site). All work includes a 30-day labor warranty.",
     bonus_txt: "<strong>8-HOUR PACKAGE BONUS:</strong> Get 1 free Remote Support session (60 min) for follow-up adjustments.",
+    b2c_title: "INDIVIDUALS & CUSTOM PC BUILDS",
+    b2c_sub: "Dedicated home rates, online parts lists and custom PC assembly from scratch.",
+    p_cfg_t: "ONLINE PC CONFIGURATION", p_cfg_s: "/ custom parts list (24h)", p_cfg_p: "Online • Prepaid via Revolut",
+    p_cfg_f1: "Full list of 100% compatible components on your budget", p_cfg_f2: "Direct shopping links to Romanian stores",
+    p_cfg_f3: "Optimized for Gaming, Video Editing or Office", p_cfg_f4: "Bonus: 70 lei deducted if we assemble the PC for you",
+    p_cfg_btn: "Request parts list",
+    p_home_t: "HOME INTERVENTION (B2C)", p_home_s: "/ up to 90 min (1 PC / router)", p_home_p: "Timișoara 0 lei • +100 lei Arad/Lugoj",
+    p_home_f1: "Reduced rate dedicated to home users", p_home_f2: "Dust cleaning, thermal paste, Windows installation",
+    p_home_f3: "Home Wi-Fi router or printer setup", p_home_f4: "Extra time: +80 lei / hour",
+    p_home_btn: "Book home visit",
+    p_build_t: "CUSTOM PC ASSEMBLY", p_build_s: "/ full system (labor)", p_build_p: "230 lei if you ordered online configuration",
+    p_build_f1: "Careful hardware assembly + clean Wire Management", p_build_f2: "BIOS update, RAM profile activation (XMP/EXPO)",
+    p_build_f3: "OS installation, drivers and stress testing", p_build_f4: "Parts supplied by client or paid in advance",
+    p_build_btn: "Book PC build",
     est_title: "INTERVENTION ESTIMATOR", est_sub: "Select what you need and get an instant package recommendation and estimate.",
+    chk_cfg: "Online PC Configuration (custom compatible parts list)",
     chk_1: "Remote software / email support (up to 60 min)", tag_1: "80 lei",
-    chk_2: "PC diagnostics (1–2 PCs) or printer installation", chk_3: "Optimization up to 5 PCs / Wi-Fi & LAN setup", chk_4: "Cabling, cable ducts, crimping / new office setup",
+    chk_home: "Home Intervention Individuals (1 PC / router / cleaning)",
+    chk_2: "Quick Office Intervention (1–2 PCs or printer)",
+    chk_build: "Custom PC Assembly from scratch + Windows & drivers",
+    chk_3: "On-site Maintenance (up to 5 PCs / Wi-Fi & LAN)",
+    chk_4: "Full Day & Networking (cabling, cable ducts, crimping)",
     zone_grp: "Service area", zone_tm: "Timișoara & surroundings (0 lei travel)", zone_al: "Arad / Lugoj (+100 lei travel fee)",
     pay_grp: "Preferred payment", pay_cash: "Cash",
     rev_title: "Fast Revolut Payment — George Niță (@nitaa2saa)", rev_sub: "Scan the QR code or use the direct link to transfer:", rev_copy: "Copy @nitaa2saa",
@@ -355,70 +421,90 @@ const i18n = {
     p1_desc: "Pose de goulottes, câblage Cat6, sertissage RJ45, configuration switch et routeur Wi-Fi double bande avec réseau invités.",
     p1_meta: "Forfait appliqué : Journée Complète & Réseau (8h)",
     p2_tag: "Maintenance Matérielle • Dumbrăvița",
-p2_title: "Optimisation et mise à niveau SSD pour 6 postes",
-p2_desc: "Nettoyage interne, remplacement pâte thermique, clonage système sur SSD neufs et sauvegarde automatique pour cabinet comptable.",
-p2_meta: "Forfait appliqué : Maintenance sur Site (4h)",
-p3_tag: "Imprimantes & Réseau • Arad",
-p3_title: "Configuration d'imprimantes multifonctions en réseau",
-p3_desc: "Attribution d'IP fixes, numérisation vers dossiers partagés sur 8 PC et installation des pilotes pour 3 imprimantes.",
-p3_meta: "Forfait appliqué : Intervention Rapide + déplacement Arad",
-p4_tag: "Support à Distance • National",
-p4_title: "Désinfection, sécurisation et messagerie professionnelle",
-p4_desc: "Connexion sécurisée via AnyDesk, suppression logiciels indésirables, mise à jour pilotes et configuration Outlook/Thunderbird.",
-p4_meta: "Forfait appliqué : Support à Distance (60 min)",
-prc_title: "SERVICES & TARIFS À LA DEMANDE", prc_sub: "Sans abonnement mensuel. Payez uniquement en cas de besoin.",
-pop_tag: "Le plus populaire",
-c1_title: "SUPPORT À DISTANCE", c1_sub: "/ session jusqu'à 60 min (1 PC)", c1_pill: "À distance • 0 lei déplacement",
-c1_f1: "Diagnostic sécurisé AnyDesk / TeamViewer", c1_f2: "Installation logiciels, pilotes et e-mails", c1_f3: "Prolongation : +80 lei / heure supp.", c1_f4: "Paiement d'avance Revolut (@nitaa2saa)", c1_btn: "Demander à distance",
-c2_title: "INTERVENTION RAPIDE", c2_sub: "/ jusqu'à 2 heures (1–2 postes)", c2_pill: "Timișoara 0 lei • +100 lei Arad/Lugoj",
-c2_f1: "Arrivée sous 2–4h à Timișoara et environs", c2_f2: "Diagnostic et dépannage pour 1–2 PC", c2_f3: "Installation imprimantes et périphériques", c2_f4: "Heure supplémentaire : +100 lei / heure", c2_btn: "Réserver 2 heures",
-c3_title: "MAINTENANCE SUR SITE", c3_sub: "/ jusqu'à 4 heures (jusqu'à 5 postes)", c3_pill: "Timișoara 0 lei • +100 lei Arad/Lugoj",
-c3_f1: "Nettoyage et optimisation jusqu'à 5 PC", c3_f2: "Configuration routeurs Wi-Fi, switchs et LAN", c3_f3: "Sauvegarde de données et partage de fichiers", c3_f4: "Heure supplémentaire : +100 lei / heure", c3_btn: "Réserver 4 heures",
-c4_title: "JOURNÉE COMPLÈTE & RÉSEAU", c4_sub: "/ journée 8h (bureau complet)", c4_pill: "Timișoara 0 lei • +100 lei Arad/Lugoj",
-c4_f1: "Goulottes, câblage UTP et sertissage RJ45", c4_f2: "Configuration complète LAN, Wi-Fi et postes", c4_f3: "Matériaux consommables non inclus", c4_f4: "Bonus inclus : 1 session à distance gratuite", c4_btn: "Réserver la journée",
-term_mat: "Matériaux et consommablesLes tarifs affichés couvrent uniquement la main-d'œuvre. Câbles, prises RJ45, goulottes ou pièces doivent être fournis par le client avant l'intervention ou payés d'avance sur justificatif.",
-term_extra: "Heures supplémentaires et garantieToute prolongation se fait uniquement avec votre accord (+80 lei/h à distance, +100 lei/h sur site). Toutes les interventions bénéficient d'une garantie de 30 jours sur la main-d'œuvre.",
-bonus_txt: "BONUS FORFAIT 8 HEURES : Bénéficiez d'une session Support à Distance (60 min) gratuite pour les réglages ultérieurs.",
-est_title: "ESTIMATEUR D'INTERVENTION", est_sub: "Cochez vos besoins et obtenez immédiatement une estimation.",
-chk_1: "Support logiciel / e-mail à distance (jusqu'à 60 min)", tag_1: "80 lei",
-chk_2: "Diagnostic PC (1–2 postes) ou installation imprimante", chk_3: "Optimisation jusqu'à 5 PC / configuration Wi-Fi & LAN", chk_4: "Câblage, goulottes, sertissage / nouveau bureau",
-zone_grp: "Zone d'intervention", zone_tm: "Timișoara et environs (0 lei déplacement)", zone_al: "Arad / Lugoj (+100 lei déplacement)",
-pay_grp: "Mode de paiement préféré", pay_cash: "Espèces (Cash)",
-rev_title: "Paiement rapide Revolut — George Niță (@nitaa2saa)", rev_sub: "Scannez le code QR ou utilisez le lien direct :", rev_copy: "Copier @nitaa2saa",
-est_rec: "Recommandation estimée (main-d'œuvre) :", est_empty: "Choisissez au moins une option", est_alert: "Veuillez sélectionner au moins une option dans l'estimateur.",
-btn_wa_est: "Envoyer sur WhatsApp", email_toggle: "Vous préférez envoyer par e-mail ? Cliquez ici",
-ph_name: "Votre nom / Entreprise", ph_contact: "E-mail ou numéro WhatsApp", ph_details: "Décrivez brièvement le problème, le nombre de PC et la ville...", form_btn: "Envoyer la demande par e-mail",
-info_title: "INFOS UTILES & CONTRATS", info_sub: "Sélectionnez une rubrique pour les zones, contrats et garantie.",
-tab_1: "Zones couvertes & Délais", tab_2: "Modèles de contrats (PDF)", tab_3: "Questions fréquentes",
-z1_badge: "DÉPLACEMENT GRATUIT (2–4H)", z1_title: "Timișoara & environs", z2_badge: "DÉPLACEMENT +100 LEI (MAX. 24H)", z2_title: "Arad & Lugoj",
-z2_desc: "Arad, Lugoj et communes voisines (frais de transport uniques par visite, sous 24 heures).",
-ctr_desc: "Ouvrez le modèle, remplissez les champs à l'écran et enregistrez en PDF ou imprimez avec Ctrl + P.",
-ctr_b2b: "Contrat Entreprises / B2B", ctr_b2c: "Contrat / Procès-Verbal Particuliers",
-q1_t: "Comment se font le paiement et les documents ?", q1_d: "Nous travaillons légalement sur la base d'un contrat de prestation de services (entreprises et particuliers). Paiement en espèces ou via Revolut (@nitaa2saa), suivi d'un procès-verbal.",
-q2_t: "Quelle est la garantie de l'intervention ?", q2_d: "À la fin de l'intervention, nous testons ensemble tous les équipements et signons le procès-verbal. Garantie de 30 jours sur la main-d'œuvre.",
-q3_t: "Comment fonctionne le Support à Distance (80 lei) ?", q3_d: "Le tarif de 80 lei couvre jusqu'à 60 minutes sur 1 PC via AnyDesk ou TeamViewer, payable d'avance via Revolut (@nitaa2saa). Prolongation à +80 lei/h avec votre accord.",
-q4_t: "Les matériaux (câbles, prises, goulottes) sont-ils inclus ?", q4_d: "Non, les tarifs couvrent la main-d'œuvre. Les matériaux doivent être fournis par le client avant l'intervention ou payés d'avance sur facture/ticket.",
-ab_badge: "Plus de 10 ans d'expérience IT", ab_title: "George Niță — Spécialiste IT",
+    p2_title: "Optimisation et mise à niveau SSD pour 6 postes",
+    p2_desc: "Nettoyage interne, remplacement pâte thermique, clonage système sur SSD neufs et sauvegarde automatique pour cabinet comptable.",
+    p2_meta: "Forfait appliqué : Maintenance sur Site (4h)",
+    p3_tag: "Imprimantes & Réseau • Arad",
+    p3_title: "Configuration d'imprimantes multifonctions en réseau",
+    p3_desc: "Attribution d'IP fixes, numérisation vers dossiers partagés sur 8 PC et installation des pilotes pour 3 imprimantes.",
+    p3_meta: "Forfait appliqué : Intervention Rapide + déplacement Arad",
+    p4_tag: "Support à Distance • National",
+    p4_title: "Désinfection, sécurisation et messagerie professionnelle",
+    p4_desc: "Connexion sécurisée via AnyDesk, suppression logiciels indésirables, mise à jour pilotes et configuration Outlook/Thunderbird.",
+    p4_meta: "Forfait appliqué : Support à Distance (60 min)",
+    prc_title: "SERVICES & TARIFS À LA DEMANDE", prc_sub: "Sans abonnement mensuel. Payez uniquement en cas de besoin.",
+    pop_tag: "Le plus populaire",
+    c1_title: "SUPPORT À DISTANCE", c1_sub: "/ session jusqu'à 60 min (1 PC)", c1_pill: "À distance • 0 lei déplacement",
+    c1_f1: "Diagnostic sécurisé AnyDesk / TeamViewer", c1_f2: "Installation logiciels, pilotes et e-mails", c1_f3: "Prolongation : +80 lei / heure supp.", c1_f4: "Paiement d'avance Revolut (@nitaa2saa)", c1_btn: "Demander à distance",
+    c2_title: "INTERVENTION RAPIDE", c2_sub: "/ jusqu'à 2 heures (1–2 postes)", c2_pill: "Timișoara 0 lei • +100 lei Arad/Lugoj",
+    c2_f1: "Arrivée sous 2–4h à Timișoara et environs", c2_f2: "Diagnostic et dépannage pour 1–2 PC", c2_f3: "Installation imprimantes et périphériques", c2_f4: "Heure supplémentaire : +100 lei / heure", c2_btn: "Réserver 2 heures",
+    c3_title: "MAINTENANCE SUR SITE", c3_sub: "/ jusqu'à 4 heures (jusqu'à 5 postes)", c3_pill: "Timișoara 0 lei • +100 lei Arad/Lugoj",
+    c3_f1: "Nettoyage et optimisation jusqu'à 5 PC", c3_f2: "Configuration routeurs Wi-Fi, switchs et LAN", c3_f3: "Sauvegarde de données et partage de fichiers", c3_f4: "Heure supplémentaire : +100 lei / heure", c3_btn: "Réserver 4 heures",
+    c4_title: "JOURNÉE COMPLÈTE & RÉSEAU", c4_sub: "/ journée 8h (bureau complet)", c4_pill: "Timișoara 0 lei • +100 lei Arad/Lugoj",
+    c4_f1: "Goulottes, câblage UTP et sertissage RJ45", c4_f2: "Configuration complète LAN, Wi-Fi et postes", c4_f3: "Matériaux consommables non inclus", c4_f4: "Bonus inclus : 1 session à distance gratuite", c4_btn: "Réserver la journée",
+    term_mat: "<strong>Matériaux et consommables</strong>Les tarifs affichés couvrent uniquement la main-d'œuvre. Câbles, prises RJ45, goulottes ou pièces doivent être fournis par le client avant l'intervention ou payés d'avance sur justificatif.",
+    term_extra: "<strong>Heures supplémentaires et garantie</strong>Toute prolongation se fait uniquement avec votre accord (+80 lei/h à distance, +100 lei/h sur site). Toutes les interventions bénéficient d'une garantie de 30 jours sur la main-d'œuvre.",
+    bonus_txt: "<strong>BONUS FORFAIT 8 HEURES :</strong> Bénéficiez d'une session Support à Distance (60 min) gratuite pour les réglages ultérieurs.",
+    b2c_title: "PARTICULIERS & PC SUR MESURE",
+    b2c_sub: "Tarifs dédiés à domicile, configuration en ligne et montage PC complet.",
+    p_cfg_t: "CONFIGURATION PC EN LIGNE", p_cfg_s: "/ liste de pièces sur mesure (24h)", p_cfg_p: "En ligne • Paiement d'avance Revolut",
+    p_cfg_f1: "Liste complète de composants 100% compatibles selon votre budget", p_cfg_f2: "Liens directs vers les boutiques en Roumanie",
+    p_cfg_f3: "Optimisé pour Gaming, Montage Vidéo ou Bureautique", p_cfg_f4: "Bonus : 70 lei déduits si nous montons le PC",
+    p_cfg_btn: "Demander une liste",
+    p_home_t: "INTERVENTION À DOMICILE (B2C)", p_home_s: "/ jusqu'à 90 min (1 PC / routeur)", p_home_p: "Timișoara 0 lei • +100 lei Arad/Lugoj",
+    p_home_f1: "Tarif réduit dédié aux particuliers", p_home_f2: "Dépoussiérage, pâte thermique, installation Windows",
+    p_home_f3: "Configuration routeur Wi-Fi ou imprimante à domicile", p_home_f4: "Heure supplémentaire : +80 lei / heure",
+    p_home_btn: "Réserver à domicile",
+    p_build_t: "MONTAGE PC SUR MESURE", p_build_s: "/ système complet (main-d'œuvre)", p_build_p: "230 lei avec configuration en ligne",
+    p_build_f1: "Assemblage soigné + Wire Management propre", p_build_f2: "Mise à jour BIOS, activation profil RAM (XMP/EXPO)",
+    p_build_f3: "Installation Windows, pilotes et tests de stabilité", p_build_f4: "Composants fournis par le client ou payés d'avance",
+    p_build_btn: "Réserver le montage",
+    est_title: "ESTIMATEUR D'INTERVENTION", est_sub: "Cochez vos besoins et obtenez immédiatement une estimation.",
+    chk_cfg: "Configuration PC en Ligne (liste de composants compatibles)",
+    chk_1: "Support logiciel / e-mail à distance (jusqu'à 60 min)", tag_1: "80 lei",
+    chk_home: "Intervention à domicile Particuliers (1 PC / routeur / nettoyage)",
+    chk_2: "Intervention Rapide Bureau (1–2 postes ou imprimante)",
+    chk_build: "Montage PC sur mesure + installation Windows & pilotes",
+    chk_3: "Maintenance sur Site (jusqu'à 5 PC / configuration Wi-Fi & LAN)",
+    chk_4: "Journée Complète & Réseau (câblage, goulottes, sertissage)",
+    zone_grp: "Zone d'intervention", zone_tm: "Timișoara et environs (0 lei déplacement)", zone_al: "Arad / Lugoj (+100 lei déplacement)",
+    pay_grp: "Mode de paiement préféré", pay_cash: "Espèces (Cash)",
+    rev_title: "Paiement rapide Revolut — George Niță (@nitaa2saa)", rev_sub: "Scannez le code QR ou utilisez le lien direct :", rev_copy: "Copier @nitaa2saa",
+    est_rec: "Recommandation estimée (main-d'œuvre) :", est_empty: "Choisissez au moins une option", est_alert: "Veuillez sélectionner au moins une option dans l'estimateur.",
+    btn_wa_est: "Envoyer sur WhatsApp", email_toggle: "Vous préférez envoyer par e-mail ? Cliquez ici",
+    ph_name: "Votre nom / Entreprise", ph_contact: "E-mail ou numéro WhatsApp", ph_details: "Décrivez brièvement le problème, le nombre de PC et la ville...", form_btn: "Envoyer la demande par e-mail",
+    info_title: "INFOS UTILES & CONTRATS", info_sub: "Sélectionnez une rubrique pour les zones, contrats et garantie.",
+    tab_1: "Zones couvertes & Délais", tab_2: "Modèles de contrats (PDF)", tab_3: "Questions fréquentes",
+    z1_badge: "DÉPLACEMENT GRATUIT (2–4H)", z1_title: "Timișoara & environs", z2_badge: "DÉPLACEMENT +100 LEI (MAX. 24H)", z2_title: "Arad & Lugoj",
+    z2_desc: "Arad, Lugoj et communes voisines (frais de transport uniques par visite, sous 24 heures).",
+    ctr_desc: "Ouvrez le modèle, remplissez les champs à l'écran et enregistrez en PDF ou imprimez avec <strong>Ctrl + P</strong>.",
+    ctr_b2b: "Contrat Entreprises / B2B", ctr_b2c: "Contrat / Procès-Verbal Particuliers",
+    q1_t: "Comment se font le paiement et les documents ?", q1_d: "Nous travaillons légalement sur la base d'un contrat de prestation de services (entreprises et particuliers). Paiement en espèces ou via Revolut (@nitaa2saa), suivi d'un procès-verbal.",
+    q2_t: "Quelle est la garantie de l'intervention ?", q2_d: "À la fin de l'intervention, nous testons ensemble tous les équipements et signons le procès-verbal. Garantie de 30 jours sur la main-d'œuvre.",
+    q3_t: "Comment fonctionne le Support à Distance (80 lei) ?", q3_d: "Le tarif de 80 lei couvre jusqu'à 60 minutes sur 1 PC via AnyDesk ou TeamViewer, payable d'avance via Revolut (@nitaa2saa). Prolongation à +80 lei/h avec votre accord.",
+    q4_t: "Les matériaux (câbles, prises, goulottes) sont-ils inclus ?", q4_d: "Non, les tarifs couvrent la main-d'œuvre. Les matériaux doivent être fournis par le client avant l'intervention ou payés d'avance sur facture/ticket.",
+    ab_badge: "Plus de 10 ans d'expérience IT", ab_title: "George Niță — Spécialiste IT",
 ab_desc: "J'offre aux petites entreprises et particuliers de Timișoara, Arad et Lugoj un support technique rapide, transparent et sans abonnement mensuel inutile — matériel, réseau et logiciel.",
 ab_vcard: "Enregistrer le contact (0767 231 199)", gdpr_btn: "Politique RGPD"
 }
 };
 function setLang(lang, btn) {
-currentLang = lang;
-localStorage.setItem('lt_lang', lang);
-document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-btn.classList.add('active');
-const dict = i18n[lang];
-document.querySelectorAll('[data-i18n]').forEach(el => {
-const key = el.getAttribute('data-i18n');
-if (dict[key]) el.innerHTML = dict[key];
-});
-document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-const key = el.getAttribute('data-i18n-ph');
-if (dict[key]) el.placeholder = dict[key];
-});
-if (document.getElementById('estText')) updateEstimate();
+  currentLang = lang;
+  localStorage.setItem('lt_lang', lang);
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const dict = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key]) el.innerHTML = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (dict[key]) el.placeholder = dict[key];
+  });
+  if (document.getElementById('estText')) updateEstimate();
 }
+
 // 6. INITIALIZARE LIMBĂ & WHATSAPP CU SERVICIU PRE-COMPLETAT
 function openWhatsAppChat(message) {
   const encoded = encodeURIComponent(message);
@@ -475,24 +561,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-function sendEstimateEmail(e) {
-  e.preventDefault();
-  const form = e.target;
-  const nume = form.querySelector('[name="nume"]')?.value.trim() || "";
-  const contact = form.querySelector('[name="contact"]')?.value.trim() || "";
-  const detalii = form.querySelector('[name="detalii"]')?.value.trim() || "";
-  const estimare = currentEstimateSummary || "Neselectat în estimator";
-
-  const subject = "Cerere ofertă IT — " + nume;
-  const body =
-    "Nume / Firmă: " + nume + "\n" +
-    "Contact (Tel / E-mail): " + contact + "\n\n" +
-    "Detalii problemă:\n" + detalii + "\n\n" +
-    "--- Rezumat Estimator ---\n" + estimare;
-
-  window.location.href =
-    "mailto:lighthousetech.tm@://gmail.com" +
-    encodeURIComponent(subject) +
-    "&body=" +
-    encodeURIComponent(body);
-}
